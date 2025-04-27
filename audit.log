@@ -1,0 +1,19 @@
+2025-03-21 12:13:44,234 - WARNING - Unknown benchmark type: file_exists
+2025-03-21 12:13:44,261 - WARNING - Unknown benchmark type: manual
+2025-03-21 12:13:44,262 - INFO - Manual check required: [MANUAL CHECK REQUIRED]: Ensure unused filesystems kernel modules are not available (Manual)
+2025-03-21 12:13:44,290 - WARNING - Unknown benchmark type: check_package_installed
+2025-03-21 12:13:44,290 - WARNING - Unknown benchmark type: apparmor_status
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: apparmor_status
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: apparmor_status
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: check_package_absent
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: check_service_disabled
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: check_service_disabled
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: check_service_disabled
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: check_package_absent
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: check_package_absent
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: check_package_absent
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: check_package_absent
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: check_service_enabled
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: check_service_enabled
+2025-03-21 12:13:44,291 - WARNING - Unknown benchmark type: check_file_permissions
+2025-03-21 12:13:44,292 - WARNING - Unknown benchmark type: check_file_ownership
