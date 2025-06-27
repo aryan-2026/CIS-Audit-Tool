@@ -978,72 +978,73 @@ LINUX_BENCHMARKS = [
     # Section 5 - Access, Authentication, Authorization
 
     # 5.2 Secure SSH Server Configuration
-    {
-        "id": "5.2.1",
-        "description": "Ensure permissions on /etc/ssh/sshd_config are configured",
-        "type": "file_permission_check",
-        "file": "/etc/ssh/sshd_config",
-        "expected_permission": "600",
-        "level": "1"
-    },
-    {
-        "id": "5.2.2",
-        "description": "Ensure SSH Protocol is set to 2",
-        "type": "sshd_config_check",
-        "parameter": "Protocol",
-        "expected_value": "2",
-        "level": "1"
-    },
-    {
-        "id": "5.2.3",
-        "description": "Ensure SSH LogLevel is appropriate",
-        "type": "sshd_config_check",
-        "parameter": "LogLevel",
-        "expected_value": "VERBOSE",
-        "level": "1"
-    },
-    {
-        "id": "5.2.4",
-        "description": "Ensure SSH X11 forwarding is disabled",
-        "type": "sshd_config_check",
-        "parameter": "X11Forwarding",
-        "expected_value": "no",
-        "level": "1"
-    },
-    {
-        "id": "5.2.5",
-        "description": "Ensure SSH MaxAuthTries is set to 4 or less",
-        "type": "sshd_config_check_max",
-        "parameter": "MaxAuthTries",
-        "expected_max_value": 4,
-        "level": "1"
-    },
-    {
-        "id": "5.2.6",
-        "description": "Ensure SSH IgnoreRhosts is enabled",
-        "type": "sshd_config_check",
-        "parameter": "IgnoreRhosts",
-        "expected_value": "yes",
-        "level": "1"
-    },
-    {
-        "id": "5.2.7",
-        "description": "Ensure SSH HostbasedAuthentication is disabled",
-        "type": "sshd_config_check",
-        "parameter": "HostbasedAuthentication",
-        "expected_value": "no",
-        "level": "1"
-    },
-    # check this benchmarks ...this is not in CIS Ubuntu 20.04
-    {
-        "id": "5.2.8",
-        "description": "Ensure SSH root login is disabled",
-        "type": "sshd_config_check",
-        "parameter": "PermitRootLogin",
-        "expected_value": "no",
-        "level": "1"
-    },
-    #
+    # {
+    #     "id": "5.2.1",
+    #     "description": "Ensure permissions on /etc/ssh/sshd_config are configured",
+    #     "type": "file_permission_check",
+    #     "file": "/etc/ssh/sshd_config",
+    #     "expected_permission": "600",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.2.2",
+    #     "description": "Ensure SSH Protocol is set to 2",
+    #     "type": "sshd_config_check",
+    #     "parameter": "Protocol",
+    #     "expected_value": "2",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.2.3",
+    #     "description": "Ensure SSH LogLevel is appropriate",
+    #     "type": "sshd_config_check",
+    #     "parameter": "LogLevel",
+    #     "expected_value": "VERBOSE",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.2.4",
+    #     "description": "Ensure SSH X11 forwarding is disabled",
+    #     "type": "sshd_config_check",
+    #     "parameter": "X11Forwarding",
+    #     "expected_value": "no",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.2.5",
+    #     "description": "Ensure SSH MaxAuthTries is set to 4 or less",
+    #     "type": "sshd_config_check_max",
+    #     "parameter": "MaxAuthTries",
+    #     "expected_max_value": 4,
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.2.6",
+    #     "description": "Ensure SSH IgnoreRhosts is enabled",
+    #     "type": "sshd_config_check",
+    #     "parameter": "IgnoreRhosts",
+    #     "expected_value": "yes",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.2.7",
+    #     "description": "Ensure SSH HostbasedAuthentication is disabled",
+    #     "type": "sshd_config_check",
+    #     "parameter": "HostbasedAuthentication",
+    #     "expected_value": "no",
+    #     "level": "1"
+    # },
+    
+    # # check this benchmarks ...this is not in CIS Ubuntu 20.04
+    # {
+    #     "id": "5.2.8",
+    #     "description": "Ensure SSH root login is disabled",
+    #     "type": "sshd_config_check",
+    #     "parameter": "PermitRootLogin",
+    #     "expected_value": "no",
+    #     "level": "1"
+    # },
+    # #
     {
         "id": "5.1.1",
         "description": "Ensure permissions on /etc/ssh/sshd_config are configured",
@@ -1182,174 +1183,666 @@ LINUX_BENCHMARKS = [
         "type": "sshd_usepam_enabled",
         "level": "1"
     },
-
-    # these benchmarks are not in CIS Ubuntu 20.04 means these are  not correctly implemented
+        {
+        "id": "5.2.1",
+        "description": "Ensure sudo is installed",
+        "type": "sudo_installed",
+        "level": 1,
+    },
     {
-        "id": "5.2.9",
-        "description": "Ensure SSH PermitEmptyPasswords is disabled",
-        "type": "sshd_config_check",
-        "parameter": "PermitEmptyPasswords",
+        "id": "5.2.2",
+        "description": "Ensure sudo commands use pty",
+        "type": "sudo_pty",
+        "level": 1,
+    },
+    {
+        "id": "5.2.3",
+        "description": "Ensure sudo log file exists",
+        "type": "sudo_log_file",
+        "level": 1,
+    },
+    {
+        "id": "5.2.5",
+        "description": "Ensure re-authentication for privilege escalation is not disabled globally",
+        "type": "sudo_authenticate_not_disabled",
+        "level": 1,
+    },
+    {
+        "id": "5.2.6",
+        "description": "Ensure sudo authentication timeout is configured correctly",
+        "type": "sudo_auth_timeout",
+        "level": 1,
+    },
+    {
+        "id": "5.2.7",
+        "description": "Ensure access to the su command is restricted",
+        "type": "su_restricted",
+        "level": 1,
+    },
+     {
+        "id": "5.3.1.1",
+        "description": "Ensure latest version of pam is installed",
+        "type": "package_installed",
+        "package": "pam",
+        "level": 1,
+    },
+    {
+        "id": "5.3.1.2",
+        "description": "Ensure libpam-modules is installed",
+        "type": "package_installed",
+        "package": "libpam-modules",
+        "level": 1,
+    },
+    {
+        "id": "5.3.1.3",
+        "description": "Ensure libpam-pwquality is installed",
+        "type": "package_installed",
+        "package": "libpam-pwquality",
+        "level": 1,
+    },
+    {
+        "id": "5.3.2.1",
+        "description": "Ensure pam_unix module is enabled",
+        "type": "pam_module_enabled",
+        "module": "pam_unix.so",
+        "file": "/etc/pam.d/common-auth",
+        "control": "auth",
+        "level": 1,
+    },
+    {
+        "id": "5.3.2.2",
+        "description": "Ensure pam_faillock module is enabled",
+        "type": "pam_module_enabled",
+        "module": "pam_faillock.so",
+        "file": "/etc/pam.d/common-auth",
+        "control": "auth",
+        "level": 1,
+    },
+    {
+        "id": "5.3.2.3",
+        "description": "Ensure pam_pwquality module is enabled",
+        "type": "pam_module_enabled",
+        "module": "pam_pwquality.so",
+        "file": "/etc/pam.d/common-password",
+        "control": "password",
+        "level": 1,
+    },
+    {
+        "id": "5.3.2.4",
+        "description": "Ensure pam_pwhistory module is enabled",
+        "type": "pam_module_enabled",
+        "module": "pam_pwhistory.so",
+        "file": "/etc/pam.d/common-password",
+        "control": "password",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.1.1",
+        "description": "Ensure password failed attempts lockout is configured (pam_faillock deny option)",
+        "type": "pam_faillock_option",
+        "option": "deny=",
+        "file": "/etc/pam.d/common-auth",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.1.2",
+        "description": "Ensure password unlock time is configured (pam_faillock unlock_time option)",
+        "type": "pam_faillock_option",
+        "option": "unlock_time=",
+        "file": "/etc/pam.d/common-auth",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.2.1",
+        "description": "Ensure password number of changed characters is configured (minclass)",
+        "type": "pwquality_option",
+        "option": "minclass",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.2.2",
+        "description": "Ensure minimum password length is configured (minlen)",
+        "type": "pwquality_option",
+        "option": "minlen",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.2.3",
+        "description": "Ensure password complexity is configured",
+        "type": "manual",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.2.4",
+        "description": "Ensure password same consecutive characters is configured (maxrepeat)",
+        "type": "pwquality_option",
+        "option": "maxrepeat",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.2.5",
+        "description": "Ensure password maximum sequential characters is configured (maxsequence)",
+        "type": "pwquality_option",
+        "option": "maxsequence",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.2.6",
+        "description": "Ensure password dictionary check is enabled (dictcheck)",
+        "type": "pwquality_option",
+        "option": "dictcheck",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.2.7",
+        "description": "Ensure password quality checking is enforced (enforcing pwquality in PAM)",
+        "type": "pam_module_enabled",
+        "module": "pam_pwquality.so",
+        "file": "/etc/pam.d/common-password",
+        "control": "password",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.2.8",
+        "description": "Ensure password quality is enforced for the root user",
+        "type": "pwquality_option",
+        "option": "enforce_for_root",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.3.1",
+        "description": "Ensure password history remember is configured",
+        "type": "pwhistory_option",
+        "option": "remember",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.3.2",
+        "description": "Ensure password history is enforced for the root user",
+        "type": "pwhistory_option",
+        "option": "enforce_for_root",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.3.3",
+        "description": "Ensure pam_pwhistory includes use_authtok",
+        "type": "pam_pwhistory_use_authtok",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.4.1",
+        "description": "Ensure pam_unix does not include nullok",
+        "type": "pam_unix_option_absent",
+        "option": "nullok",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.4.2",
+        "description": "Ensure pam_unix does not include remember",
+        "type": "pam_unix_option_absent",
+        "option": "remember",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.4.3",
+        "description": "Ensure pam_unix includes a strong password hashing algorithm (sha512 or yescrypt)",
+        "type": "pam_unix_strong_hash",
+        "level": 1,
+    },
+    {
+        "id": "5.3.3.4.4",
+        "description": "Ensure pam_unix includes use_authtok",
+        "type": "pam_unix_option_present",
+        "option": "use_authtok",
+        "level": 1,
+    },
+    {
+        "id": "5.4.1.1",
+        "description": "Ensure password expiration is configured",
+        "type": "login_defs_option",
+        "option": "PASS_MAX_DAYS",
+        "level": 1,
+    },
+    {
+        "id": "5.4.1.3",
+        "description": "Ensure password expiration warning days is configured",
+        "type": "login_defs_option",
+        "option": "PASS_WARN_AGE",
+        "level": 1,
+    },
+    {
+        "id": "5.4.1.4",
+        "description": "Ensure strong password hashing algorithm is configured",
+        "type": "login_defs_hash_algorithm",
+        "level": 1,
+    },
+    {
+        "id": "5.4.1.5",
+        "description": "Ensure inactive password lock is configured",
+        "type": "login_defs_option",
+        "option": "INACTIVE",
+        "level": 1,
+    },
+    {
+        "id": "5.4.1.6",
+        "description": "Ensure all users last password change date is in the past",
+        "type": "shadow_last_change_in_past",
+        "level": 1,
+    },
+    {
+        "id": "5.4.2.1",
+        "description": "Ensure root is the only UID 0 account",
+        "type": "only_root_uid0",
+        "level": 1,
+    },
+    {
+        "id": "5.4.2.2",
+        "description": "Ensure root is the only GID 0 account",
+        "type": "only_root_gid0",
+        "level": 1,
+    },
+    {
+        "id": "5.4.2.3",
+        "description": "Ensure group root is the only GID 0 group",
+        "type": "only_group_root_gid0",
+        "level": 1,
+    },
+    {
+        "id": "5.4.2.4",
+        "description": "Ensure root account access is controlled",
+        "type": "root_account_access_controlled",
+        "level": 1,
+    },
+    {
+        "id": "5.4.2.5",
+        "description": "Ensure root path integrity",
+        "type": "root_path_integrity",
+        "level": 1,
+    },
+    {
+        "id": "5.4.2.6",
+        "description": "Ensure root user umask is configured",
+        "type": "root_umask",
+        "level": 1,
+    },
+    {
+        "id": "5.4.2.7",
+        "description": "Ensure system accounts do not have a valid login shell",
+        "type": "system_accounts_no_login_shell",
+        "level": 1,
+    },
+    {
+        "id": "5.4.2.8",
+        "description": "Ensure accounts without a valid login shell are locked",
+        "type": "accounts_without_login_shell_locked",
+        "level": 1,
+    },
+    {
+        "id": "5.4.3.1",
+        "description": "Ensure nologin is not listed in /etc/shells",
+        "type": "nologin_not_in_shells",
+        "level": 1,
+    },
+    {
+        "id": "5.4.3.2",
+        "description": "Ensure default user shell timeout is configured",
+        "type": "default_shell_timeout",
+        "level": 1,
+    },
+    {
+        "id": "5.4.3.3",
+        "description": "Ensure default user umask is configured",
+        "type": "default_user_umask",
+        "level": 1,
+    },
+    # 6.1.1 Configure systemd-journald service
+    {
+        "id": "6.1.1.1",
+        "description": "Ensure journald service is enabled and active",
+        "type": "service_enabled_active",
+        "service": "systemd-journald",
+        "level": 1,
+    },
+    {
+        "id": "6.1.1.2",
+        "description": "Ensure journald log file access is configured",
+        "type": "manual",
+        "level": 1,
+    },
+    {
+        "id": "6.1.1.3",
+        "description": "Ensure journald log file rotation is configured",
+        "type": "manual",
+        "level": 1,
+    },
+    {
+        "id": "6.1.1.4",
+        "description": "Ensure only one logging system is in use",
+        "type": "only_one_logging_system",
+        "level": 1,
+    },
+
+    # 6.1.2 Configure journald
+    {
+        "id": "6.1.2.1.1",
+        "description": "Ensure systemd-journal-remote is installed",
+        "type": "package_installed",
+        "package": "systemd-journal-remote",
+        "level": 1,
+    },
+    {
+        "id": "6.1.2.1.2",
+        "description": "Ensure systemd-journal-upload authentication is configured",
+        "type": "manual",
+        "level": 1,
+    },
+    {
+        "id": "6.1.2.1.3",
+        "description": "Ensure systemd-journal-upload is enabled and active",
+        "type": "service_enabled_active",
+        "service": "systemd-journal-upload",
+        "level": 1,
+    },
+    {
+        "id": "6.1.2.1.4",
+        "description": "Ensure systemd-journal-remote service is not in use",
+        "type": "service_not_active",
+        "service": "systemd-journal-remote",
+        "level": 1,
+    },
+    {
+        "id": "6.1.2.2",
+        "description": "Ensure journald ForwardToSyslog is disabled",
+        "type": "journald_config",
+        "option": "ForwardToSyslog",
         "expected_value": "no",
-        "level": "1"
+        "level": 1,
     },
     {
-        "id": "5.2.10",
-        "description": "Ensure SSH PermitUserEnvironment is disabled",
-        "type": "sshd_config_check",
-        "parameter": "PermitUserEnvironment",
-        "expected_value": "no",
-        "level": "1"
+        "id": "6.1.2.3",
+        "description": "Ensure journald Compress is configured",
+        "type": "journald_config",
+        "option": "Compress",
+        "expected_value": "yes",
+        "level": 1,
     },
     {
-        "id": "5.2.11",
-        "description": "Ensure SSH Idle Timeout Interval is configured",
-        "type": "sshd_timeout_check",
-        "parameters": ["ClientAliveInterval", "ClientAliveCountMax"],
-        "expected_values": {"ClientAliveInterval": 300, "ClientAliveCountMax": 0},
-        "level": "1"
-    },
-    {
-        "id": "5.2.12",
-        "description": "Ensure SSH LoginGraceTime is set to one minute or less",
-        "type": "sshd_config_check_max",
-        "parameter": "LoginGraceTime",
-        "expected_max_seconds": 60,
-        "level": "1"
-    },
-    {
-        "id": "5.2.13",
-        "description": "Ensure SSH access is limited",
-        "type": "manual",
-        "level": "1"
-    },
-    {
-        "id": "5.2.14",
-        "description": "Ensure SSH warning banner is configured",
-        "type": "sshd_config_check",
-        "parameter": "Banner",
-        "expected_value": "/etc/issue.net",
-        "level": "1"
+        "id": "6.1.2.4",
+        "description": "Ensure journald Storage is configured",
+        "type": "journald_config",
+        "option": "Storage",
+        "expected_value": "persistent",
+        "level": 1,
     },
 
-    # 5.3 Configure PAM
+    # 6.1.3 Configure rsyslog
     {
-        "id": "5.3.1",
-        "description": "Ensure password creation requirements are configured",
-        "type": "pam_pwquality_check",
-        "level": "1"
+        "id": "6.1.3.1",
+        "description": "Ensure rsyslog is installed",
+        "type": "package_installed",
+        "package": "rsyslog",
+        "level": 1,
     },
     {
-        "id": "5.3.2",
-        "description": "Ensure lockout for failed password attempts is configured",
-        "type": "pam_tally_check",
-        "level": "1"
+        "id": "6.1.3.2",
+        "description": "Ensure rsyslog service is enabled and active",
+        "type": "service_enabled_active",
+        "service": "rsyslog",
+        "level": 1,
     },
     {
-        "id": "5.3.3",
-        "description": "Ensure password reuse is limited",
-        "type": "pam_pwhistory_check",
-        "level": "1"
+        "id": "6.1.3.3",
+        "description": "Ensure journald is configured to send logs to rsyslog",
+        "type": "journald_config",
+        "option": "ForwardToSyslog",
+        "expected_value": "yes",
+        "level": 1,
     },
     {
-        "id": "5.3.4",
-        "description": "Ensure password hashing algorithm is SHA-512",
-        "type": "pam_password_hash_check",
-        "expected_value": "sha512",
-        "level": "1"
+        "id": "6.1.3.4",
+        "description": "Ensure rsyslog log file creation mode is configured",
+        "type": "rsyslog_log_file_creation_mode",
+        "level": 1,
+    },
+    {
+        "id": "6.1.3.5",
+        "description": "Ensure rsyslog logging is configured",
+        "type": "manual",
+        "level": 1,
+    },
+    {
+        "id": "6.1.3.6",
+        "description": "Ensure rsyslog is configured to send logs to a remote log host",
+        "type": "manual",
+        "level": 1,
+    },
+    {
+        "id": "6.1.3.7",
+        "description": "Ensure rsyslog is not configured to receive logs from a remote client",
+        "type": "rsyslog_not_receive_remote",
+        "level": 1,
+    },
+    {
+        "id": "6.1.3.8",
+        "description": "Ensure logrotate is configured",
+        "type": "manual",
+        "level": 1,
     },
 
-    # Section 6 - System Maintenance
-
-    # 6.1 System File Permissions
+    # 6.1.4 Configure Logfiles
     {
-        "id": "6.1.1",
-        "description": "Audit system file permissions",
-        "type": "manual",
-        "level": "1"
-    },
-    {
-        "id": "6.1.2",
-        "description": "Ensure permissions on /etc/passwd are configured",
-        "type": "file_permission_check",
-        "file": "/etc/passwd",
-        "expected_permission": "644",
-        "level": "1"
-    },
-    {
-        "id": "6.1.3",
-        "description": "Ensure permissions on /etc/shadow are configured",
-        "type": "file_permission_check",
-        "file": "/etc/shadow",
-        "expected_permission": "000",
-        "level": "1"
-    },
-    {
-        "id": "6.1.4",
-        "description": "Ensure permissions on /etc/group are configured",
-        "type": "file_permission_check",
-        "file": "/etc/group",
-        "expected_permission": "644",
-        "level": "1"
-    },
-    {
-        "id": "6.1.5",
-        "description": "Ensure permissions on /etc/gshadow are configured",
-        "type": "file_permission_check",
-        "file": "/etc/gshadow",
-        "expected_permission": "000",
-        "level": "1"
+        "id": "6.1.4.1",
+        "description": "Ensure access to all logfiles has been configured",
+        "type": "logfile_permissions",
+        "level": 1,
     },
 
-    # Section 7 - Application Security
+    # 6.3 Configure Integrity Checking
+    {
+        "id": "6.3.1",
+        "description": "Ensure AIDE is installed",
+        "type": "aide_installed",
+        "level": 1,
+    },
+    {
+        "id": "6.3.2",
+        "description": "Ensure filesystem integrity is regularly checked",
+        "type": "aide_cron",
+        "level": 1,
+    },    
+    # 7.1 System File Permissions
+    {"id": "7.1.1", "description": "Ensure permissions on /etc/passwd are configured", "type": "file_permissions", "path": "/etc/passwd", "mode": "644", "level": 1},
+    {"id": "7.1.2", "description": "Ensure permissions on /etc/passwd- are configured", "type": "file_permissions", "path": "/etc/passwd-", "mode": "600", "level": 1},
+    {"id": "7.1.3", "description": "Ensure permissions on /etc/group are configured", "type": "file_permissions", "path": "/etc/group", "mode": "644", "level": 1},
+    {"id": "7.1.4", "description": "Ensure permissions on /etc/group- are configured", "type": "file_permissions", "path": "/etc/group-", "mode": "600", "level": 1},
+    {"id": "7.1.5", "description": "Ensure permissions on /etc/shadow are configured", "type": "file_permissions", "path": "/etc/shadow", "mode": "640", "level": 1},
+    {"id": "7.1.6", "description": "Ensure permissions on /etc/shadow- are configured", "type": "file_permissions", "path": "/etc/shadow-", "mode": "600", "level": 1},
+    {"id": "7.1.7", "description": "Ensure permissions on /etc/gshadow are configured", "type": "file_permissions", "path": "/etc/gshadow", "mode": "640", "level": 1},
+    {"id": "7.1.8", "description": "Ensure permissions on /etc/gshadow- are configured", "type": "file_permissions", "path": "/etc/gshadow-", "mode": "600", "level": 1},
+    {"id": "7.1.9", "description": "Ensure permissions on /etc/shells are configured", "type": "file_permissions", "path": "/etc/shells", "mode": "644", "level": 1},
+    {"id": "7.1.10", "description": "Ensure permissions on /etc/security/opasswd are configured", "type": "file_permissions", "path": "/etc/security/opasswd", "mode": "600", "level": 1},
+    {"id": "7.1.11", "description": "Ensure world writable files and directories are secured", "type": "no_world_writable_files", "level": 1},
+    {"id": "7.1.12", "description": "Ensure no files or directories without an owner and a group exist", "type": "no_unowned_files", "level": 1},
+    {"id": "7.1.13", "description": "Ensure SUID and SGID files are reviewed", "type": "manual", "level": 1},
 
-    # 7.1 Time Synchronization
-    {
-        "id": "7.1.1",
-        "description": "Ensure time synchronization is in use",
-        "type": "service_check",
-        "services": ["chronyd", "ntpd", "systemd-timesyncd"],
-        "level": "1"
-    },
-    {
-        "id": "7.1.2",
-        "description": "Ensure systemd-timesyncd is configured",
-        "type": "manual",
-        "level": "1"
-    },
-    {
-        "id": "7.1.3",
-        "description": "Ensure chrony is configured",
-        "type": "manual",
-        "level": "1"
-    },
-    {
-        "id": "7.1.4",
-        "description": "Ensure ntp is configured",
-        "type": "manual",
-        "level": "1"
-    },
+    # 7.2 Local User and Group Settings
+    {"id": "7.2.1", "description": "Ensure accounts in /etc/passwd use shadowed passwords", "type": "shadowed_passwords", "level": 1},
+    {"id": "7.2.2", "description": "Ensure /etc/shadow password fields are not empty", "type": "no_empty_passwords", "level": 1},
+    {"id": "7.2.3", "description": "Ensure all groups in /etc/passwd exist in /etc/group", "type": "all_passwd_groups_exist", "level": 1},
+    {"id": "7.2.4", "description": "Ensure shadow group is empty", "type": "shadow_group_empty", "level": 1},
+    {"id": "7.2.5", "description": "Ensure no duplicate UIDs exist", "type": "no_duplicate_uids", "level": 1},
+    {"id": "7.2.7", "description": "Ensure no duplicate user names exist", "type": "no_duplicate_usernames", "level": 1},
+    {"id": "7.2.8", "description": "Ensure no duplicate group names exist", "type": "no_duplicate_groupnames", "level": 1},
+    {"id": "7.2.9", "description": "Ensure local interactive user home directories are configured", "type": "user_home_directories_exist", "level": 1},
+    {"id": "7.2.10", "description": "Ensure local interactive user dot files access is configured", "type": "dot_files_permissions", "level": 1},
     
-    # Section 7.2 - Mail Transfer Agent
-    {
-        "id": "7.2.1",
-        "description": "Ensure mail transfer agent is configured for local-only mode",
-        "type": "manual",
-        "level": "1"
-    },
+    # these benchmarks are not in CIS Ubuntu 20.04 means these are  not correctly implemented
+    # {
+    #     "id": "5.2.9",
+    #     "description": "Ensure SSH PermitEmptyPasswords is disabled",
+    #     "type": "sshd_config_check",
+    #     "parameter": "PermitEmptyPasswords",
+    #     "expected_value": "no",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.2.10",
+    #     "description": "Ensure SSH PermitUserEnvironment is disabled",
+    #     "type": "sshd_config_check",
+    #     "parameter": "PermitUserEnvironment",
+    #     "expected_value": "no",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.2.11",
+    #     "description": "Ensure SSH Idle Timeout Interval is configured",
+    #     "type": "sshd_timeout_check",
+    #     "parameters": ["ClientAliveInterval", "ClientAliveCountMax"],
+    #     "expected_values": {"ClientAliveInterval": 300, "ClientAliveCountMax": 0},
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.2.12",
+    #     "description": "Ensure SSH LoginGraceTime is set to one minute or less",
+    #     "type": "sshd_config_check_max",
+    #     "parameter": "LoginGraceTime",
+    #     "expected_max_seconds": 60,
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.2.13",
+    #     "description": "Ensure SSH access is limited",
+    #     "type": "manual",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.2.14",
+    #     "description": "Ensure SSH warning banner is configured",
+    #     "type": "sshd_config_check",
+    #     "parameter": "Banner",
+    #     "expected_value": "/etc/issue.net",
+    #     "level": "1"
+    # },
 
-    # Section 7.3 - Automatic Updates
-    {
-        "id": "7.3.1",
-        "description": "Ensure package manager repositories are configured",
-        "type": "manual",
-        "level": "1"
-    },
-    {
-        "id": "7.3.2",
-        "description": "Ensure system is up-to-date",
-        "type": "manual",
-        "level": "1"
-    }
+    # # 5.3 Configure PAM
+    # {
+    #     "id": "5.3.1",
+    #     "description": "Ensure password creation requirements are configured",
+    #     "type": "pam_pwquality_check",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.3.2",
+    #     "description": "Ensure lockout for failed password attempts is configured",
+    #     "type": "pam_tally_check",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.3.3",
+    #     "description": "Ensure password reuse is limited",
+    #     "type": "pam_pwhistory_check",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "5.3.4",
+    #     "description": "Ensure password hashing algorithm is SHA-512",
+    #     "type": "pam_password_hash_check",
+    #     "expected_value": "sha512",
+    #     "level": "1"
+    # },
+
+    # # Section 6 - System Maintenance
+
+    # # 6.1 System File Permissions
+    # {
+    #     "id": "6.1.1",
+    #     "description": "Audit system file permissions",
+    #     "type": "manual",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "6.1.2",
+    #     "description": "Ensure permissions on /etc/passwd are configured",
+    #     "type": "file_permission_check",
+    #     "file": "/etc/passwd",
+    #     "expected_permission": "644",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "6.1.3",
+    #     "description": "Ensure permissions on /etc/shadow are configured",
+    #     "type": "file_permission_check",
+    #     "file": "/etc/shadow",
+    #     "expected_permission": "000",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "6.1.4",
+    #     "description": "Ensure permissions on /etc/group are configured",
+    #     "type": "file_permission_check",
+    #     "file": "/etc/group",
+    #     "expected_permission": "644",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "6.1.5",
+    #     "description": "Ensure permissions on /etc/gshadow are configured",
+    #     "type": "file_permission_check",
+    #     "file": "/etc/gshadow",
+    #     "expected_permission": "000",
+    #     "level": "1"
+    # },
+
+    # # Section 7 - Application Security
+
+    # # 7.1 Time Synchronization
+    # {
+    #     "id": "7.1.1",
+    #     "description": "Ensure time synchronization is in use",
+    #     "type": "service_check",
+    #     "services": ["chronyd", "ntpd", "systemd-timesyncd"],
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "7.1.2",
+    #     "description": "Ensure systemd-timesyncd is configured",
+    #     "type": "manual",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "7.1.3",
+    #     "description": "Ensure chrony is configured",
+    #     "type": "manual",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "7.1.4",
+    #     "description": "Ensure ntp is configured",
+    #     "type": "manual",
+    #     "level": "1"
+    # },
+    
+    # # Section 7.2 - Mail Transfer Agent
+    # {
+    #     "id": "7.2.1",
+    #     "description": "Ensure mail transfer agent is configured for local-only mode",
+    #     "type": "manual",
+    #     "level": "1"
+    # },
+
+    # # Section 7.3 - Automatic Updates
+    # {
+    #     "id": "7.3.1",
+    #     "description": "Ensure package manager repositories are configured",
+    #     "type": "manual",
+    #     "level": "1"
+    # },
+    # {
+    #     "id": "7.3.2",
+    #     "description": "Ensure system is up-to-date",
+    #     "type": "manual",
+    #     "level": "1"
+    # }
 
 ]
 
