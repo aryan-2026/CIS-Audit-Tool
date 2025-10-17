@@ -19,6 +19,7 @@ def main():
     parser.add_argument("--csv", action="store_true", help="Output results as CSV")
     parser.add_argument("--psv", action="store_true", help="Output results as pipe-separated values")
     parser.add_argument("--tsv", action="store_true", help="Output results as tab-separated values")
+    parser.add_argument("--html", action="store_true", help="Output results as HTML table")
     parser.add_argument("-V", "--version", action="version", version="%(prog)s 1.0")
     parser.add_argument("-c", "--config", help="Location of config file to load")
     
@@ -49,6 +50,8 @@ def main():
         output_format = "psv"
     elif args.tsv:
         output_format = "tsv"
+    elif args.html:
+        output_format = "html"
 
     generate_output(results, output_format)
 
