@@ -1,0 +1,2 @@
+[console_scripts]
+cis-audit-tool = cis_audit_tool.cli:main
