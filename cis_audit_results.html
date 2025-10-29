@@ -26,8 +26,8 @@
     <div class="summary">
         <strong>Summary:</strong>
         <ul>
-            <li>Passed: 47</li>
-            <li>Failed: 180</li>
+            <li>Passed: 30</li>
+            <li>Failed: 197</li>
             <li>Manual: 23</li>
             <li>Total: 250</li>
         </ul>
@@ -47,7 +47,7 @@
             data: {
                 labels: ['PASS', 'FAIL', 'MANUAL'],
                 datasets: [{
-                    data: [47, 180, 23],
+                    data: [30, 197, 23],
                     backgroundColor: ['#4caf50', '#f44336', '#ffeb3b'],
                 }]
             },
@@ -79,7 +79,7 @@
 <table>
 <tr><th>id</th><th>status</th><th>description</th></tr>
 <tr class='pass'><td>1.1.1.1</td><td>PASS</td><td>Ensure cramfs kernel module is not available</td></tr>
-<tr class='fail'><td>1.1.2.1</td><td>FAIL</td><td>Ensure /etc/passwd exists</td></tr>
+<tr class='pass'><td>1.1.2.1</td><td>PASS</td><td>Ensure /etc/passwd exists</td></tr>
 <tr class='pass'><td>1.1.1.2</td><td>PASS</td><td>Ensure freevxfs kernel module is not available (Automated)</td></tr>
 <tr class='pass'><td>1.1.1.3</td><td>PASS</td><td>Ensure hfs kernel module is not available (Automated)</td></tr>
 <tr class='pass'><td>1.1.1.4</td><td>PASS</td><td>Ensure hfsplus kernel module is not available (Automated)</td></tr>
@@ -134,23 +134,23 @@
 <tr class='pass'><td>1.7.8</td><td>PASS</td><td>Ensure GDM autorun-never is enabled</td></tr>
 <tr class='fail'><td>1.7.9</td><td>FAIL</td><td>Ensure GDM autorun-never is not overridden</td></tr>
 <tr class='fail'><td>1.7.10</td><td>FAIL</td><td>Ensure XDMCP is not enabled</td></tr>
-<tr class='pass'><td>2.1.3</td><td>PASS</td><td>Ensure DHCP server services are not in use</td></tr>
-<tr class='pass'><td>2.1.4</td><td>PASS</td><td>Ensure DNS server services are not in use</td></tr>
-<tr class='pass'><td>2.1.5</td><td>PASS</td><td>Ensure dnsmasq services are not in use</td></tr>
-<tr class='pass'><td>2.1.6</td><td>PASS</td><td>Ensure FTP server services are not in use</td></tr>
-<tr class='pass'><td>2.1.7</td><td>PASS</td><td>Ensure LDAP server services are not in use</td></tr>
-<tr class='pass'><td>2.1.8</td><td>PASS</td><td>Ensure message access server services are not in use</td></tr>
-<tr class='pass'><td>2.1.9</td><td>PASS</td><td>Ensure network file system services are not in use</td></tr>
-<tr class='pass'><td>2.1.10</td><td>PASS</td><td>Ensure NIS server services are not in use</td></tr>
-<tr class='pass'><td>2.1.11</td><td>PASS</td><td>Ensure print server services are not in use</td></tr>
-<tr class='pass'><td>2.1.12</td><td>PASS</td><td>Ensure rpcbind services are not in use</td></tr>
-<tr class='pass'><td>2.1.13</td><td>PASS</td><td>Ensure rsync services are not in use</td></tr>
-<tr class='pass'><td>2.1.14</td><td>PASS</td><td>Ensure Samba file server services are not in use</td></tr>
-<tr class='pass'><td>2.1.15</td><td>PASS</td><td>Ensure SNMP services are not in use</td></tr>
-<tr class='pass'><td>2.1.16</td><td>PASS</td><td>Ensure TFTP server services are not in use</td></tr>
-<tr class='pass'><td>2.1.17</td><td>PASS</td><td>Ensure web proxy server services are not in use</td></tr>
-<tr class='pass'><td>2.1.18</td><td>PASS</td><td>Ensure web server services are not in use</td></tr>
-<tr class='pass'><td>2.1.19</td><td>PASS</td><td>Ensure xinetd services are not in use</td></tr>
+<tr class='fail'><td>2.1.3</td><td>FAIL</td><td>Ensure DHCP server services are not in use</td></tr>
+<tr class='fail'><td>2.1.4</td><td>FAIL</td><td>Ensure DNS server services are not in use</td></tr>
+<tr class='fail'><td>2.1.5</td><td>FAIL</td><td>Ensure dnsmasq services are not in use</td></tr>
+<tr class='fail'><td>2.1.6</td><td>FAIL</td><td>Ensure FTP server services are not in use</td></tr>
+<tr class='fail'><td>2.1.7</td><td>FAIL</td><td>Ensure LDAP server services are not in use</td></tr>
+<tr class='fail'><td>2.1.8</td><td>FAIL</td><td>Ensure message access server services are not in use</td></tr>
+<tr class='fail'><td>2.1.9</td><td>FAIL</td><td>Ensure network file system services are not in use</td></tr>
+<tr class='fail'><td>2.1.10</td><td>FAIL</td><td>Ensure NIS server services are not in use</td></tr>
+<tr class='fail'><td>2.1.11</td><td>FAIL</td><td>Ensure print server services are not in use</td></tr>
+<tr class='fail'><td>2.1.12</td><td>FAIL</td><td>Ensure rpcbind services are not in use</td></tr>
+<tr class='fail'><td>2.1.13</td><td>FAIL</td><td>Ensure rsync services are not in use</td></tr>
+<tr class='fail'><td>2.1.14</td><td>FAIL</td><td>Ensure Samba file server services are not in use</td></tr>
+<tr class='fail'><td>2.1.15</td><td>FAIL</td><td>Ensure SNMP services are not in use</td></tr>
+<tr class='fail'><td>2.1.16</td><td>FAIL</td><td>Ensure TFTP server services are not in use</td></tr>
+<tr class='fail'><td>2.1.17</td><td>FAIL</td><td>Ensure web proxy server services are not in use</td></tr>
+<tr class='fail'><td>2.1.18</td><td>FAIL</td><td>Ensure web server services are not in use</td></tr>
+<tr class='fail'><td>2.1.19</td><td>FAIL</td><td>Ensure xinetd services are not in use</td></tr>
 <tr class='manual'><td>2.1.21</td><td>MANUAL</td><td>Ensure mail transfer agent is configured for local-only mode</td></tr>
 <tr class='manual'><td>2.1.22</td><td>MANUAL</td><td>Ensure only approved services are listening on a network interface</td></tr>
 <tr class='pass'><td>2.2.1</td><td>PASS</td><td>Ensure NIS Client is not installed</td></tr>
@@ -319,14 +319,14 @@
 <tr class='fail'><td>7.1.11</td><td>FAIL</td><td>Ensure world writable files and directories are secured</td></tr>
 <tr class='pass'><td>7.1.12</td><td>PASS</td><td>Ensure no files or directories without an owner and a group exist</td></tr>
 <tr class='manual'><td>7.1.13</td><td>MANUAL</td><td>Ensure SUID and SGID files are reviewed</td></tr>
-<tr class='pass'><td>7.2.1</td><td>PASS</td><td>Ensure accounts in /etc/passwd use shadowed passwords</td></tr>
+<tr class='fail'><td>7.2.1</td><td>FAIL</td><td>Ensure accounts in /etc/passwd use shadowed passwords</td></tr>
 <tr class='pass'><td>7.2.2</td><td>PASS</td><td>Ensure /etc/shadow password fields are not empty</td></tr>
-<tr class='fail'><td>7.2.3</td><td>FAIL</td><td>Ensure all groups in /etc/passwd exist in /etc/group</td></tr>
+<tr class='pass'><td>7.2.3</td><td>PASS</td><td>Ensure all groups in /etc/passwd exist in /etc/group</td></tr>
 <tr class='pass'><td>7.2.4</td><td>PASS</td><td>Ensure shadow group is empty</td></tr>
 <tr class='pass'><td>7.2.5</td><td>PASS</td><td>Ensure no duplicate UIDs exist</td></tr>
 <tr class='pass'><td>7.2.7</td><td>PASS</td><td>Ensure no duplicate user names exist</td></tr>
 <tr class='pass'><td>7.2.8</td><td>PASS</td><td>Ensure no duplicate group names exist</td></tr>
 <tr class='pass'><td>7.2.9</td><td>PASS</td><td>Ensure local interactive user home directories are configured</td></tr>
-<tr class='pass'><td>7.2.10</td><td>PASS</td><td>Ensure local interactive user dot files access is configured</td></tr>
+<tr class='fail'><td>7.2.10</td><td>FAIL</td><td>Ensure local interactive user dot files access is configured</td></tr>
 </table>
 </body></html>

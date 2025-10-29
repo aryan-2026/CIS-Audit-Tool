@@ -1666,12 +1666,12 @@ LINUX_BENCHMARKS = [
     {"id": "7.1.13", "description": "Ensure SUID and SGID files are reviewed", "type": "manual", "level": 1},
 
     # 7.2 Local User and Group Settings
-    {"id": "7.2.1", "description": "Ensure accounts in /etc/passwd use shadowed passwords", "type": "shadowed_passwords", "level": 1},
-    {"id": "7.2.2", "description": "Ensure /etc/shadow password fields are not empty", "type": "no_empty_passwords", "level": 1},
+    {"id": "7.2.1", "description": "Ensure accounts in /etc/passwd use shadowed passwords",  "type": "shadowed_passwords", "path": "/etc/passwd", "level": 1},
+    {"id": "7.2.2", "description": "Ensure /etc/shadow password fields are not empty", "path": "/etc/shadow", "type": "no_empty_passwords", "level": 1},
     {"id": "7.2.3", "description": "Ensure all groups in /etc/passwd exist in /etc/group", "type": "all_passwd_groups_exist", "level": 1},
     {"id": "7.2.4", "description": "Ensure shadow group is empty", "type": "shadow_group_empty", "level": 1},
     {"id": "7.2.5", "description": "Ensure no duplicate UIDs exist", "type": "no_duplicate_uids", "level": 1},
-    {"id": "7.2.7", "description": "Ensure no duplicate user names exist", "type": "no_duplicate_usernames", "level": 1},
+    {"id": "7.2.7", "description": "Ensure no duplicate user names exist", "type": "no_duplicate_usernames", "path": "/etc/passwd", "level": 1},
     {"id": "7.2.8", "description": "Ensure no duplicate group names exist", "type": "no_duplicate_groupnames", "level": 1},
     {"id": "7.2.9", "description": "Ensure local interactive user home directories are configured", "type": "user_home_directories_exist", "level": 1},
     {"id": "7.2.10", "description": "Ensure local interactive user dot files access is configured", "type": "dot_files_permissions", "level": 1},

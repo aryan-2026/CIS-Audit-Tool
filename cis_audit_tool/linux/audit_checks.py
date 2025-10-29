@@ -11,63 +11,109 @@ logging.basicConfig(level=logging.INFO, format="%(message)s")
 
 ### Helper function to run shell commands
 def run_command(cmd):
-    """Runs a shell command and returns True if successful, False otherwise."""
+    """Runs a shell command and returns (success, output)."""
     try:
         result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-        if result.returncode != 0 or not result.stdout.strip():
-            logging.debug(f"Command failed: {cmd}\nOutput: {result.stdout}\nError: {result.stderr}")
-            return False
-        return True
+        output = result.stdout.strip() + ("\n" + result.stderr.strip() if result.stderr.strip() else "")
+        # success = True if returncode is 0 AND output is not empty (for checks that expect output)
+        # For general commands, success is just returncode == 0
+        success = result.returncode == 0
+        return success, output
     except Exception as e:
-        logging.debug(f"Error executing command: {cmd}\n{e}")
-        return False
+        return False, str(e)
 
 ### Secure shell quoting
 def quote(val):
     return shlex.quote(val)
 
+# ----------------------------------------------
+# --- NEW FUNCTION FOR FILE EXISTENCE CHECK ----
+# ----------------------------------------------
+def check_file_exists(path):
+    """
+    Checks if a file or directory exists at the given path.
+    This explicitly addresses checks like 'Ensure /etc/passwd exists'.
+    """
+    return os.path.exists(path)
+
+# ----------------------------------------------------
+# --- NEW FUNCTION FOR SUID/SGID LISTING (7.1.13) ----
+# ----------------------------------------------------
+def check_suid_sgid_file_list():
+    """
+    Finds all SUID/SGID files for manual review (7.1.13).
+    Returns success status and the list of files found.
+    """
+    # Find files with SUID (-4000) or SGID (-2000) bits set, excluding separate filesystems
+    find_cmd = "find / -xdev -type f \\( -perm -4000 -o -perm -2000 \\) -print"
+    # Note: run_command uses returncode 0 for success, which is what we need here,
+    # even if the list is long.
+    return run_command(find_cmd)
+
 ### Checks
 def check_kernel_module_disabled(module):
-    return not run_command(f"lsmod | grep -w {quote(module)}")
+    success, output = run_command(f"lsmod | grep -w {quote(module)}")
+    return not success  # True if module is NOT loaded
+
 
 def check_partition_mounted(partition):
-    return run_command(f"mount | grep -w {quote(partition)}")
+    success, _ = run_command(f"mount | grep -w {quote(partition)}")
+    return success
+
 
 def check_partition_option(partition, option):
-    return run_command(f"mount | grep -w {quote(partition)} | grep -w {quote(option)}")
+    success, _ = run_command(f"mount | grep -w {quote(partition)} | grep -w {quote(option)}")
+    return success
+
 
 def check_apparmor_installed():
-    return run_command("dpkg-query -W apparmor")
+    success, _ = run_command("dpkg-query -W apparmor")
+    return success
 
 def check_apparmor_enabled():
-    return run_command("apparmor_status | grep 'enabled'")
+    success, _ = run_command("apparmor_status | grep 'enabled'")
+    return success
 
 def check_apparmor_enforce():
-    return run_command("apparmor_status | grep 'enforce'")
+    success, _ = run_command("apparmor_status | grep 'enforce'")
+    return success
+
 
 def check_bootloader_password():
-    return run_command("grep 'password' /boot/grub/grub.cfg")
+    success, _ = run_command("grep 'password' /boot/grub/grub.cfg")
+    return success
 
 def check_bootloader_permissions():
-    return run_command("stat -c %a /boot/grub/grub.cfg | grep -w '600'")
+    success, _ = run_command("stat -c %a /boot/grub/grub.cfg | grep -w '600'")
+    return success
+
 
 def check_aslr_enabled():
-    return run_command("sysctl kernel.randomize_va_space | grep -w '2'")
+    success, output = run_command("sysctl kernel.randomize_va_space")
+    return output.strip().endswith("2")
 
 def check_ptrace_scope():
-    return run_command("sysctl kernel.yama.ptrace_scope | grep -w '1'")
+    success, output = run_command("sysctl kernel.yama.ptrace_scope")
+    return output.strip().endswith("1")
 
 def check_coredumps_restricted():
-    return run_command("sysctl fs.suid_dumpable | grep -w '0'")
+    success, output = run_command("sysctl fs.suid_dumpable")
+    return output.strip().endswith("0")
+
 
 def check_prelink_not_installed():
-    return not run_command("dpkg-query -W prelink")
+    success, _ = run_command("dpkg-query -W prelink")
+    return not success  # True if package is not installed
+
 
 def check_auto_error_reporting_disabled():
-    return run_command("systemctl is-enabled apport | grep -w 'disabled'")
+    success, _ = run_command("systemctl is-enabled apport | grep -w 'disabled'")
+    return success
 
 def check_file_permissions(path, mode):
-    return run_command(f"stat -c %a {quote(path)} | grep -w {quote(mode)}")
+    success, _ = run_command(f"stat -c %a {quote(path)} | grep -w {quote(mode)}")
+    return success
+
 
 # motd starts here
 def check_motd_access():
@@ -116,7 +162,8 @@ def check_gdm_lock_cannot_be_overridden():
 def check_gdm_autorun_never_enabled():
     return check_gsettings_value("org.gnome.desktop.media-handling", "autorun-never", "true")
 def check_gdm_autorun_never_not_overridden():
-    return run_command("grep -r 'org/gnome/desktop/media-handling/autorun-never' /etc/dconf/db/local.d/locks")
+    success, _ = run_command("grep -r 'org/gnome/desktop/media-handling/autorun-never' /etc/dconf/db/local.d/locks")
+    return success
 def check_xdmcp_disabled():
     try:
         with open("/etc/gdm/custom.conf", "r") as f:
@@ -154,131 +201,213 @@ def check_single_time_sync_daemon():
         {"name": "chrony", "cmd": "systemctl is-enabled chronyd"},
         {"name": "ntpd", "cmd": "systemctl is-enabled ntpd"},
     ]
-    enabled = 0
+    enabled_count = 0
     for daemon in daemons:
-        if run_command(f"{daemon['cmd']} | grep -w 'enabled'"):
-            enabled += 1
-    return enabled == 1
+        success, output = run_command(daemon['cmd'])
+        if success and "enabled" in output:
+            enabled_count += 1
+    return enabled_count == 1
+
 def check_timesyncd_configured():
-    return run_command("grep -E '^(NTP|FallbackNTP)=' /etc/systemd/timesyncd.conf")
+    success, _ = run_command("grep -E '^(NTP|FallbackNTP)=' /etc/systemd/timesyncd.conf")
+    return success
+
 def check_timesyncd_enabled_running():
-    return (run_command("systemctl is-enabled systemd-timesyncd | grep -w 'enabled'") and
-            run_command("systemctl is-active systemd-timesyncd | grep -w 'active'"))
+    enabled, _ = run_command("systemctl is-enabled systemd-timesyncd | grep -w 'enabled'")
+    active, _ = run_command("systemctl is-active systemd-timesyncd | grep -w 'active'")
+    return enabled and active
+
 def check_chrony_configured():
-    return run_command("grep -E '^server ' /etc/chrony/chrony.conf")
+    success, _ = run_command("grep -E '^server ' /etc/chrony/chrony.conf")
+    return success
+
 def check_chrony_user():
-    return run_command("ps -eo user,comm | grep chronyd | grep -w '_chrony'")
+    success, output = run_command("ps -eo user,comm | grep chronyd | grep -w '_chrony'")
+    return success
+
 def check_chrony_enabled_running():
-    return (run_command("systemctl is-enabled chronyd | grep -w 'enabled'") and
-            run_command("systemctl is-active chronyd | grep -w 'active'"))
+    enabled, _ = run_command("systemctl is-enabled chronyd | grep -w 'enabled'")
+    active, _ = run_command("systemctl is-active chronyd | grep -w 'active'")
+    return enabled and active
+
 
 def check_cron_enabled_running():
-    return (run_command("systemctl is-enabled cron | grep -w 'enabled'") and
-            run_command("systemctl is-active cron | grep -w 'active'"))
+    enabled, _ = run_command("systemctl is-enabled cron | grep -w 'enabled'")
+    active, _ = run_command("systemctl is-active cron | grep -w 'active'")
+    return enabled and active
+
 def check_crontab_restricted():
     return (not os.path.exists("/etc/cron.deny") and
             os.path.exists("/etc/cron.allow") and
             check_file_permissions("/etc/cron.allow", "600"))
+
 def check_restricted_at_users():
-    return (not os.path.exists("/etc/at.deny") and 
+    return (not os.path.exists("/etc/at.deny") and
             os.path.exists("/etc/at.allow") and
             check_file_permissions("/etc/at.allow", "600"))
 
 def check_sshd_access_configured():
-    return run_command(
+    success, _ = run_command(
         "grep -Ei '^(AllowUsers|DenyUsers|AllowGroups|DenyGroups)' /etc/ssh/sshd_config"
     )
-def check_sshd_banner():
-    return run_command("grep -E '^[^#]*Banner' /etc/ssh/sshd_config")
-def check_sshd_ciphers():
-    return run_command("grep -E '^[^#]*Ciphers' /etc/ssh/sshd_config")
-def check_sshd_clientalive():
-    interval_ok = run_command("grep -E '^[^#]*ClientAliveInterval' /etc/ssh/sshd_config")
-    countmax_ok = run_command("grep -E '^[^#]*ClientAliveCountMax' /etc/ssh/sshd_config")
-    return interval_ok and countmax_ok
-def check_sshd_disable_forwarding():
-    return run_command("grep -E '^[^#]*AllowTcpForwarding\\s+no' /etc/ssh/sshd_config")
-def check_sshd_gssapiauth_disabled():
-    return run_command("grep -E '^[^#]*GSSAPIAuthentication\\s+no' /etc/ssh/sshd_config")
-def check_sshd_hostbasedauth_disabled():
-    return run_command("grep -E '^[^#]*HostbasedAuthentication\\s+no' /etc/ssh/sshd_config")
-def check_sshd_ignorerhosts_enabled():
-    return run_command("grep -E '^[^#]*IgnoreRhosts\\s+yes' /etc/ssh/sshd_config")
-def check_sshd_kexalgorithms():
-    return run_command("grep -E '^[^#]*KexAlgorithms' /etc/ssh/sshd_config")
-def check_sshd_logingracetime():
-    return run_command("grep -E '^[^#]*LoginGraceTime' /etc/ssh/sshd_config")
-def check_sshd_loglevel():
-    return run_command("grep -E '^[^#]*LogLevel' /etc/ssh/sshd_config")
-def check_sshd_macs():
-    return run_command("grep -E '^[^#]*MACs' /etc/ssh/sshd_config")
-def check_sshd_maxauthtries():
-    return run_command("grep -E '^[^#]*MaxAuthTries' /etc/ssh/sshd_config")
-def check_sshd_maxsessions():
-    return run_command("grep -E '^[^#]*MaxSessions' /etc/ssh/sshd_config")
-def check_sshd_maxstartups():
-    return run_command("grep -E '^[^#]*MaxStartups' /etc/ssh/sshd_config")
-def check_sshd_permitemptypasswords_disabled():
-    return run_command("grep -E '^[^#]*PermitEmptyPasswords\\s+no' /etc/ssh/sshd_config")
-def check_sshd_permitrootlogin_disabled():
-    return run_command("grep -E '^[^#]*PermitRootLogin\\s+no' /etc/ssh/sshd_config")
-def check_sshd_permituserenvironment_disabled():
-    return run_command("grep -E '^[^#]*PermitUserEnvironment\\s+no' /etc/ssh/sshd_config")
-def check_sshd_usepam_enabled():
-    return run_command("grep -E '^[^#]*UsePAM\\s+yes' /etc/ssh/sshd_config")
+    return success
 
+def check_sshd_banner():
+    success, _ = run_command("grep -E '^[^#]*Banner' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_ciphers():
+    success, _ = run_command("grep -E '^[^#]*Ciphers' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_clientalive():
+    interval_ok, _ = run_command("grep -E '^[^#]*ClientAliveInterval' /etc/ssh/sshd_config")
+    countmax_ok, _ = run_command("grep -E '^[^#]*ClientAliveCountMax' /etc/ssh/sshd_config")
+    return interval_ok and countmax_ok
+
+def check_sshd_disable_forwarding():
+    success, _ = run_command("grep -E '^[^#]*AllowTcpForwarding\\s+no' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_gssapiauth_disabled():
+    success, _ = run_command("grep -E '^[^#]*GSSAPIAuthentication\\s+no' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_hostbasedauth_disabled():
+    success, _ = run_command("grep -E '^[^#]*HostbasedAuthentication\\s+no' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_ignorerhosts_enabled():
+    success, _ = run_command("grep -E '^[^#]*IgnoreRhosts\\s+yes' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_kexalgorithms():
+    success, _ = run_command("grep -E '^[^#]*KexAlgorithms' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_logingracetime():
+    success, _ = run_command("grep -E '^[^#]*LoginGraceTime' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_loglevel():
+    success, _ = run_command("grep -E '^[^#]*LogLevel' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_macs():
+    success, _ = run_command("grep -E '^[^#]*MACs' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_maxauthtries():
+    success, _ = run_command("grep -E '^[^#]*MaxAuthTries' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_maxsessions():
+    success, _ = run_command("grep -E '^[^#]*MaxSessions' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_maxstartups():
+    success, _ = run_command("grep -E '^[^#]*MaxStartups' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_permitemptypasswords_disabled():
+    success, _ = run_command("grep -E '^[^#]*PermitEmptyPasswords\\s+no' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_permitrootlogin_disabled():
+    success, _ = run_command("grep -E '^[^#]*PermitRootLogin\\s+no' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_permituserenvironment_disabled():
+    success, _ = run_command("grep -E '^[^#]*PermitUserEnvironment\\s+no' /etc/ssh/sshd_config")
+    return success
+
+def check_sshd_usepam_enabled():
+    success, _ = run_command("grep -E '^[^#]*UsePAM\\s+yes' /etc/ssh/sshd_config")
+    return success
+
+
+import os
+from shlex import quote
+
+# --- SYSCTL checks ---
 
 def check_sysctl_setting(param, expected):
-    return run_command(f"sysctl {quote(param)} | grep -w {quote(expected)}")
+    success, _ = run_command(f"sysctl {quote(param)} | grep -w {quote(expected)}")
+    return success
 
 def check_multiple_sysctl(params):
     return all(check_sysctl_setting(p, v) for p, v in params.items())
 
+# --- Package checks ---
+
 def check_package_installed(package):
-    return run_command(f"dpkg-query -W {quote(package)}")
+    success, _ = run_command(f"dpkg-query -W {quote(package)}")
+    return success
 
 def check_package_not_installed(package):
     return not check_package_installed(package)
 
+# --- SSH config checks ---
+
 def check_sshd_config_setting(directive, value):
-    return run_command(f"grep -E '^\\s*{quote(directive)}\\s+{quote(value)}\\s*$' /etc/ssh/sshd_config | grep -v '^\\s*#'")
-
-def check_ufw_enabled():
-    return run_command("systemctl is-enabled ufw | grep -w 'enabled'")
-
-def check_ufw_loopback():
-    return (run_command("ufw status | grep 'Anywhere on lo'") and
-            run_command("ufw status | grep 'Anywhere DENY'"))
-
-def check_ufw_default_deny():
-    return (run_command("ufw status verbose | grep 'deny (incoming)'") and
-            run_command("ufw status verbose | grep 'deny (outgoing)'") and
-            run_command("ufw status verbose | grep 'deny (routed)'"))
-
-def check_nftables_table_exists():
-    return run_command("nft list tables")
-
-def check_nftables_service_enabled():
-    return run_command("systemctl is-enabled nftables | grep -w 'enabled'")
-
-def check_iptables_default_deny(ipv6=False):
-    cmd = "ip6tables" if ipv6 else "iptables"
-    return (run_command(f"{cmd} -L INPUT | grep 'DROP'") and
-            run_command(f"{cmd} -L FORWARD | grep 'DROP'") and
-            run_command(f"{cmd} -L OUTPUT | grep 'DROP'"))
+    # This matches uncommented lines with exact value
+    cmd = (
+        f"grep -E '^[ \\t]*{quote(directive)}[ \\t]+{quote(value)}[ \\t]*$' "
+        "/etc/ssh/sshd_config | grep -v '^[ \\t]*#'"
+    )
+    success, _ = run_command(cmd)
+    return success
 
 def check_ssh_file_permissions(path, mode):
     return check_file_permissions(path, mode)
+
+# --- UFW Firewall Checks ---
+
+def check_ufw_enabled():
+    success, _ = run_command("systemctl is-enabled ufw | grep -w 'enabled'")
+    return success
+
+def check_ufw_loopback():
+    s1, _ = run_command("ufw status | grep 'Anywhere on lo'")
+    s2, _ = run_command("ufw status | grep 'Anywhere DENY'")
+    return s1 and s2
+
+def check_ufw_default_deny():
+    s1, _ = run_command("ufw status verbose | grep -i 'deny (incoming)'")
+    s2, _ = run_command("ufw status verbose | grep -i 'deny (outgoing)'")
+    s3, _ = run_command("ufw status verbose | grep -i 'deny (routed)'")
+    return s1 and s2 and s3
+
+# --- nftables ---
+
+def check_nftables_table_exists():
+    success, _ = run_command("nft list tables")
+    return success
+
+def check_nftables_service_enabled():
+    success, _ = run_command("systemctl is-enabled nftables | grep -w 'enabled'")
+    return success
+
+# --- iptables (IPv4 and IPv6) ---
+
+def check_iptables_default_deny(ipv6=False):
+    cmd = "ip6tables" if ipv6 else "iptables"
+    s1, _ = run_command(f"{cmd} -L INPUT | grep -w 'DROP'")
+    s2, _ = run_command(f"{cmd} -L FORWARD | grep -w 'DROP'")
+    s3, _ = run_command(f"{cmd} -L OUTPUT | grep -w 'DROP'")
+    return s1 and s2 and s3
+
+# --- sudo config ---
 
 def check_sudo_installed():
     return check_package_installed("sudo")
 
 def check_sudo_pty():
-    return run_command("grep -Ei '^\\s*Defaults\\s+use_pty' /etc/sudoers")
+    success, _ = run_command("grep -Ei '^\\s*Defaults\\s+use_pty' /etc/sudoers")
+    return success
 
 def check_sudo_log_file():
-    # Default log file path; you may want to parse /etc/sudoers for a custom path
-    return os.path.exists("/var/log/sudo.log")
+    return os.path.exists("/var/log/sudo.log")     ###check this again
 
 def check_sudo_authenticate_not_disabled():
     try:
@@ -294,6 +423,7 @@ def check_sudo_auth_timeout():
             for line in f:
                 if line.lstrip().startswith("Defaults") and "timestamp_timeout=" in line and not line.lstrip().startswith("#"):
                     try:
+                        # Assuming timestamp_timeout is the first value after the equals sign
                         return int(line.split("timestamp_timeout=")[1].split()[0]) <= 15
                     except ValueError:
                         return False
@@ -310,7 +440,17 @@ def check_su_restricted():
         return False
 
 def check_pam_module_enabled(module, file, control):
-    return run_command(f"grep -E '^\\s*{quote(control)}\\s+{quote(module)}' {quote(file)}")
+    """
+    Check if a specific PAM module with a given control type is enabled in a PAM config file.
+
+    :param module: PAM module name (e.g., pam_unix.so)
+    :param file: Full path to the PAM config file (e.g., /etc/pam.d/common-auth)
+    :param control: Control flag (e.g., required, sufficient)
+    :return: True if found, False otherwise
+    """
+    pattern = f"^\\s*{quote(control)}\\s+{quote(module)}"
+    success, _ = run_command(f"grep -E {quote(pattern)} {quote(file)}")
+    return success
 
 def check_pam_faillock_option(option, file="/etc/pam.d/common-auth"):
     try:
@@ -335,8 +475,6 @@ def check_pwquality_option(option, value=None, conf_file="/etc/security/pwqualit
         logging.debug(f"Error reading {conf_file}: {e}")
         return False
 
-import logging
-
 def check_pwhistory_option(option, value=None, conf_file="/etc/security/pwhistory.conf"):
     try:
         with open(conf_file) as f:
@@ -359,13 +497,7 @@ def check_pam_pwhistory_use_authtok(file="/etc/pam.d/common-password"):
     except Exception as e:
         logging.debug(f"Error reading {file}: {e}")
         return False
-def check_pam_pwhistory_use_authtok(file="/etc/pam.d/common-password"):
-    try:
-        with open(file) as f:
-            return any("pam_pwhistory.so" in line and "use_authtok" in line and not line.lstrip().startswith("#") for line in f)
-    except Exception as e:
-        logging.debug(f"Error reading {file}: {e}")
-        return False
+
 def check_pam_unix_option(option=None, file="/etc/pam.d/common-password", must_exist=True):
     """
     Checks if pam_unix.so lines contain or exclude a specific option.
@@ -428,10 +560,11 @@ def check_login_defs_hash_algorithm():
         return False
 
 def check_only_root_uid0():
-    """Ensure only root has UID 0."""
+    """Ensure only 'root' has UID 0 in /etc/passwd."""
     try:
         with open("/etc/passwd") as f:
-            return [line.split(":")[0] for line in f if line.split(":")[2] == "0"] == ["root"]
+            uid0_users = [line.split(":")[0] for line in f if line.strip().split(":")[2] == "0"]
+        return uid0_users == ["root"]
     except Exception as e:
         logging.debug(f"Error reading /etc/passwd: {e}")
         return False
@@ -563,46 +696,58 @@ def check_default_user_umask():
         logging.debug(f"Error reading umask files: {e}")
         return False
 
+# --- AIDE and Integrity Checking ---
+
+def check_package_installed(package):
+    success, _ = run_command(f"dpkg-query -W {quote(package)}")
+    return success
+
 def check_aide_installed():
     return check_package_installed("aide")
 
 def check_aide_cron():
-    return run_command("crontab -u root -l | grep aide")
+    success, _ = run_command("crontab -u root -l | grep aide")
+    return success
 
 def check_file_integrity():
     return os.path.exists("/var/lib/aide/aide.db")
 
-def check_service_enabled_active(service):
-    """Check if a service is enabled and active."""
-    return (
-        run_command(f"systemctl is-enabled {quote(service)} | grep -w 'enabled'") and
-        run_command(f"systemctl is-active {quote(service)} | grep -w 'active'")
-    )
+# --- Service Checks ---
 
-def check_package_installed(package):
-    return run_command(f"dpkg-query -W {quote(package)}")
+def check_service_enabled_active(service):
+    """Check if a service is both enabled and active."""
+    enabled, _ = run_command(f"systemctl is-enabled {quote(service)} | grep -w 'enabled'")
+    active, _ = run_command(f"systemctl is-active {quote(service)} | grep -w 'active'")
+    return enabled and active
+
+def check_service_not_active(service):
+    """Check if a service is inactive."""
+    success, _ = run_command(f"systemctl is-active {quote(service)} | grep -w 'inactive'")
+    return success
+
+# --- journald Configuration ---
 
 def check_journald_config(option, expected_value):
-    """Check journald config option in /etc/systemd/journald.conf."""
+    """Check if a specific journald config option matches the expected value."""
     try:
         with open("/etc/systemd/journald.conf") as f:
             for line in f:
-                if line.strip().startswith(option):
-                    return expected_value in line
+                line = line.strip()
+                if line.startswith("#") or not line:
+                    continue
+                if line.startswith(option):
+                    key, _, value = line.partition("=")
+                    return value.strip() == expected_value
         return False
     except Exception as e:
         logging.debug(f"Error reading journald.conf: {e}")
         return False
 
 def check_only_one_logging_system():
-    """Check only one logging system is enabled (journald or rsyslog)."""
-    journald = run_command("systemctl is-enabled systemd-journald | grep -w 'enabled'")
-    rsyslog = run_command("systemctl is-enabled rsyslog | grep -w 'enabled'")
+    """Ensure only one logging system (journald or rsyslog) is enabled."""
+    journald, _ = run_command("systemctl is-enabled systemd-journald | grep -w 'enabled'")
+    rsyslog, _ = run_command("systemctl is-enabled rsyslog | grep -w 'enabled'")
     return (journald and not rsyslog) or (not journald and rsyslog)
-
-def check_service_not_active(service):
-    """Check if a service is not active."""
-    return run_command(f"systemctl is-active {quote(service)} | grep -w 'inactive'")
 
 def check_logfile_permissions():
     """Check that all files in /var/log are 0640 or stricter."""
@@ -647,58 +792,114 @@ def check_rsyslog_not_receive_remote():
 
 def check_no_world_writable_files():
     """Ensure no world-writable files exist on the filesystem."""
-    return not run_command("find / -xdev -type f -perm -0002")
+    success, output = run_command("find / -xdev -type f -perm -0002 2>/dev/null")
+    return output.strip() == ""
+
 
 def check_no_unowned_files():
-    """Ensure there are no unowned or ungrouped files."""
-    return not run_command("find / -xdev \\( -nouser -o -nogroup \\)")
+    """Ensure there are no unowned or ungrouped files (7.1.12)."""
+    success, output = run_command("find / -xdev \\( -nouser -o -nogroup \\) 2>/dev/null")
+    return output.strip() == ""
+
 
 ### 7.2 Local User and Group Settings
 
 def check_shadowed_passwords():
-    """Ensure accounts in /etc/passwd use shadowed passwords."""
-    return not run_command("awk -F: '($2 != \"x\") {print}' /etc/passwd")
+    """Ensure accounts in /etc/passwd use shadowed passwords (7.2.1)."""
+    # PASS if awk returns no output (i.e., not success and output is empty)
+    success, _ = run_command("awk -F: '($2 != \"x\") {print}' /etc/passwd")
+    return not success
 
 def check_no_empty_passwords():
-    """Ensure no empty password fields exist in /etc/shadow."""
-    return not run_command("awk -F: '($2 == \"\") {print}' /etc/shadow")
+    """Ensure no empty password fields exist in /etc/shadow (7.2.2)."""
+    # PASS if awk returns no output (i.e., not success and output is empty)
+    success, _ = run_command("awk -F: '($2 == \"\") {print}' /etc/shadow")
+    return not success
 
 def check_all_passwd_groups_exist():
-    """Ensure all groups referenced in /etc/passwd exist in /etc/group."""
-    return run_command(
+    """Ensure all groups referenced in /etc/passwd exist in /etc/group (7.2.3)."""
+    # PASS if shell pipeline returns success (exit 0)
+    success, _ = run_command(
         "awk -F: '{print $4}' /etc/passwd | while read gid; do getent group \"$gid\" >/dev/null || exit 1; done"
     )
+    return success
 
 def check_shadow_group_empty():
-    """Ensure shadow group is empty."""
-    return not run_command("awk -F: '/^shadow/ {print $4}' /etc/group | grep -vq '^$'")
+    """Ensure shadow group is empty (7.2.4)."""
+    # PASS if grep returns no output (i.e., not success and output is empty)
+    success, _ = run_command("awk -F: '/^shadow/ {print $4}' /etc/group | grep -vq '^$'")
+    return not success
 
 def check_no_duplicate_uids():
-    """Ensure no duplicate UIDs exist."""
-    return not run_command("cut -d: -f3 /etc/passwd | sort | uniq -d")
+    """Ensure no duplicate UIDs exist (7.2.5)."""
+    # PASS if cut/sort/uniq returns no output (i.e., not success and output is empty)
+    success, _ = run_command("cut -d: -f3 /etc/passwd | sort | uniq -d")
+    duplicates = _.strip()
+    if duplicates:
+        print("Duplicate usernames found:", duplicates)
+        return False
+    return True
 
 def check_no_duplicate_usernames():
-    """Ensure no duplicate usernames exist."""
-    return not run_command("cut -d: -f1 /etc/passwd | sort | uniq -d")
+    """Ensure no duplicate user names exist (7.2.7)."""
+    success, output = run_command("cut -d: -f1 /etc/passwd | sort | uniq -d")
+    duplicates = output.strip()
+    if duplicates:
+        print("Duplicate usernames found:", duplicates)
+        return False
+    return True
 
 def check_no_duplicate_groupnames():
-    """Ensure no duplicate group names exist."""
-    return not run_command("cut -d: -f1 /etc/group | sort | uniq -d")
+    """Ensure no duplicate group names exist (7.2.8)."""
+    success, output = run_command("cut -d: -f1 /etc/group | sort | uniq -d")
+    duplicates = output.strip()
+    if duplicates:
+        print("Duplicate usernames found:", duplicates)
+        return False
+    return True
 
 def check_user_home_directories_exist():
     """Ensure local interactive user home directories exist."""
-    return not run_command(
+    success, output = run_command(
         "awk -F: '($3 >= 1000 && $1 != \"nobody\") {if ($6 == \"\" || system(\"[ -d \" $6 \" ]\")) exit 1}' /etc/passwd"
     )
+    if not success:
+        print("One or more user home directories are missing or invalid.")
+    return success
+
 
 def check_dot_files_permissions():
-    """Ensure local interactive user dot files access is configured."""
-    return not run_command("find /home -xdev -type f -name '.*' -perm /022")
+    """Ensure local interactive user dot files access is configured (not group/world writable)."""
+    success, output = run_command("find /home -xdev -type f -name '.*' -perm /022")
+    violations = output.strip()
+    if violations:
+        print("Insecure dotfiles found:\n", violations)
+        return False
+    return True
+
 
 
 ### Dispatcher Function
 def check_dispatcher(benchmark):
     check_functions = {
+        # General Utility
+        "file_exists": lambda b: check_file_exists(b["path"]),
+        # 7.1 System File Permissions
+        "no_world_writable_files": lambda _: check_no_world_writable_files(),
+        "no_unowned_files": lambda _: check_no_unowned_files(),
+        "suid_sgid_file_list": lambda _: check_suid_sgid_file_list(), # For 7.1.13
+        # 7.2 Local User and Group Settings
+        "shadowed_passwords": lambda _: check_shadowed_passwords(),
+        "no_empty_passwords": lambda _: check_no_empty_passwords(),
+        "all_passwd_groups_exist": lambda _: check_all_passwd_groups_exist(),
+        "shadow_group_empty": lambda _: check_shadow_group_empty(),
+        "no_duplicate_uids": lambda _: check_no_duplicate_uids(),
+        "no_duplicate_usernames": lambda _: check_no_duplicate_usernames(),
+        "no_duplicate_groupnames": lambda _: check_no_duplicate_groupnames(),
+        "user_home_directories_exist": lambda _: check_user_home_directories_exist(),
+        "dot_files_permissions": lambda _: check_dot_files_permissions(),
+        "manual": lambda _: False,
+        # Rest of the checks
         "kernel_module_disabled": lambda b: check_kernel_module_disabled(b["module"]),
         "partition_mounted": lambda b: check_partition_mounted(b["partition"]),
         "partition_option": lambda b: check_partition_option(b["partition"], b["option"]),
@@ -807,23 +1008,25 @@ def check_dispatcher(benchmark):
         "logfile_permissions": lambda _: check_logfile_permissions(),
         "rsyslog_log_file_creation_mode": lambda _: check_rsyslog_log_file_creation_mode(),
         "rsyslog_not_receive_remote": lambda _: check_rsyslog_not_receive_remote(),
-        # 7.1 System File Permissions
-        "no_world_writable_files": lambda _: check_no_world_writable_files(),
         "no_unowned_files": lambda _: check_no_unowned_files(),
-        # 7.2 Local User and Group Settings
+        "no_duplicate_uids": lambda _: check_no_duplicate_uids(),
+        "no_duplicate_usernames": lambda _: check_no_duplicate_usernames(),
+        "no_duplicate_groupnames": lambda _: check_no_duplicate_groupnames(),
+        "no_world_writable_files": lambda _: check_no_world_writable_files(),
         "shadowed_passwords": lambda _: check_shadowed_passwords(),
         "no_empty_passwords": lambda _: check_no_empty_passwords(),
         "all_passwd_groups_exist": lambda _: check_all_passwd_groups_exist(),
         "shadow_group_empty": lambda _: check_shadow_group_empty(),
-        "no_duplicate_uids": lambda _: check_no_duplicate_uids(),
-        "no_duplicate_usernames": lambda _: check_no_duplicate_usernames(),
-        "no_duplicate_groupnames": lambda _: check_no_duplicate_groupnames(),
-        "user_home_directories_exist": lambda _: check_user_home_directories_exist(),
-        "dot_files_permissions": lambda _: check_dot_files_permissions(),
-        "manual": lambda _: False,
     }
 
     check_func = check_functions.get(benchmark["type"])
+    
+    # Special handling for SUID/SGID manual check (7.1.13)
+    if benchmark["id"] == "7.1.13":
+        # Run the list function but mark as MANUAL
+        check_suid_sgid_file_list() 
+        return False # Always returns False to mark as MANUAL/Needs Review
+
     return check_func(benchmark) if check_func else False
 
 ### Run Audit Function
@@ -845,7 +1048,11 @@ def run_linux_audit(config=None, level=None, includes=None, excludes=None):
             continue
 
         status = check_dispatcher(benchmark)
-        status_str = "MANUAL" if benchmark["type"] == "manual" else "PASS" if status else "FAIL"
+        # Use explicit check for 7.1.13 to ensure it's MANUAL
+        if benchmark["id"] == "7.1.13":
+             status_str = "MANUAL"
+        else:
+             status_str = "MANUAL" if benchmark["type"] == "manual" else "PASS" if status else "FAIL"
         
         result_str = f"{benchmark['id']}: {status_str} - {benchmark['description']}"
         # commenting this line to avoid double output:
