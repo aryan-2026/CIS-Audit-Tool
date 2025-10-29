@@ -1,0 +1,2410 @@
+﻿[
+    {
+        "Control":  "1.1.1",
+        "Title":  "Ensure \u0027Enforce password history\u0027 is set to \u002724 or more password(s)\u0027",
+        "Status":  "Fail",
+        "Actual":  "Password history size = 0",
+        "Remediation":  "Set password history size \u003e= 24 via GPO or Local Security Policy"
+    },
+    {
+        "Control":  "1.1.2",
+        "Title":  "Ensure \u0027Maximum password age\u0027 is set to \u0027365 or fewer days, but not 0\u0027",
+        "Status":  "Pass",
+        "Actual":  "Maximum password age = 42 days",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "1.1.3",
+        "Title":  "Ensure \u0027Minimum password age\u0027 is set to \u00271 or more day(s)\u0027",
+        "Status":  "Fail",
+        "Actual":  "Minimum password age = 0 day(s)",
+        "Remediation":  "Set minimum password age \u003e= 1 day via GPO or Local Security Policy"
+    },
+    {
+        "Control":  "1.1.4",
+        "Title":  "Ensure \u0027Minimum password length\u0027 is set to \u002714 or more character(s)\u0027",
+        "Status":  "Fail",
+        "Actual":  "Minimum password length = 0 character(s)",
+        "Remediation":  "Set minimum password length \u003e= 14 characters via GPO or Local Security Policy"
+    },
+    {
+        "Control":  "1.1.5",
+        "Title":  "Ensure \u0027Password must meet complexity requirements\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "Password complexity is disabled",
+        "Remediation":  "Enable password complexity via GPO or registry"
+    },
+    {
+        "Control":  "1.1.6",
+        "Title":  "Ensure \u0027Relax minimum password length limits\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "Relax minimum password length limits is disabled",
+        "Remediation":  "Enable relax minimum password length limits via GPO or registry"
+    },
+    {
+        "Control":  "1.1.7",
+        "Title":  "Ensure \u0027Store passwords using reversible encryption\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "Reversible encryption is enabled",
+        "Remediation":  "Disable reversible encryption via GPO or registry"
+    },
+    {
+        "Control":  "1.2.1",
+        "Title":  "Ensure \u0027Account lockout duration\u0027 is set to \u002715 or more minute(s)\u0027",
+        "Status":  "Fail",
+        "Actual":  "Account lockout duration = 10 minute(s)",
+        "Remediation":  "Set account lockout duration \u003e= 15 minutes via Local Security Policy (secpol.msc) or GPO"
+    },
+    {
+        "Control":  "1.2.2",
+        "Title":  "Ensure \u0027Account lockout threshold\u0027 is set to \u00275 or fewer invalid logon attempt(s), but not 0\u0027",
+        "Status":  "Fail",
+        "Actual":  "Account lockout threshold = 10 invalid attempts",
+        "Remediation":  "Set account lockout threshold \u003c= 5 and \u003e 0 via Local Security Policy (secpol.msc) or GPO"
+    },
+    {
+        "Control":  "1.2.3",
+        "Title":  "Ensure \u0027Allow Administrator account lockout\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Allow Administrator account lockout\u0027 is set to \u0027Enabled\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "1.2.4",
+        "Title":  "Ensure \u0027Reset account lockout counter after\u0027 is set to \u002715 or more minute(s)\u0027",
+        "Status":  "Fail",
+        "Actual":  "Account lockout counter reset = 10 minute(s)",
+        "Remediation":  "Set lockout counter reset \u003e= 15 minutes via GPO or Local Security Policy"
+    },
+    {
+        "Control":  "2.2.1",
+        "Title":  "Ensure \u0027Access Credential Manager as a trusted caller\u0027 is set to \u0027No One\u0027",
+        "Status":  "Fail",
+        "Actual":  "Credential Manager access is allowed",
+        "Remediation":  "Restrict Credential Manager access via GPO or registry"
+    },
+    {
+        "Control":  "2.2.2",
+        "Title":  "Ensure \u0027Access this computer from the network\u0027 is set to \u0027Administrators, Remote Desktop Users\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Access this computer from the network\u0027 is set to \u0027Administrators, Remote Desktop Users\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.3",
+        "Title":  "Ensure \u0027Act as part of the operating system\u0027 is set to \u0027No One\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Act as part of the operating system\u0027 is not restricted",
+        "Remediation":  "Restrict the \u0027Act as part of the operating system\u0027 permission via GPO or registry"
+    },
+    {
+        "Control":  "2.2.4",
+        "Title":  "Ensure \u0027Adjust memory quotas for a process\u0027 is set to \u0027Administrators, LOCAL SERVICE, NETWORK SERVICE\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Adjust memory quotas for a process\u0027 is set to \u0027Administrators, LOCAL SERVICE, NETWORK SERVICE\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.5",
+        "Title":  "Ensure \u0027Allow log on locally\u0027 is set to \u0027Administrators, Users\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Allow log on locally\u0027 is set to \u0027Administrators, Users\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.6",
+        "Title":  "Ensure \u0027Allow log on through Remote Desktop Services\u0027 is set to \u0027Administrators, Remote Desktop Users\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Allow log on through Remote Desktop Services\u0027 is set to \u0027Administrators, Remote Desktop Users\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.7",
+        "Title":  "Ensure \u0027Back up files and directories\u0027 is set to \u0027Administrators\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Back up files and directories\u0027 is set to \u0027Administrators\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.8",
+        "Title":  "Ensure \u0027Change the system time\u0027 is set to \u0027Administrators, LOCAL SERVICE\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Change the system time\u0027 is set to \u0027Administrators, LOCAL SERVICE\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.9",
+        "Title":  "Ensure \u0027Change the time zone\u0027 is set to \u0027Administrators, LOCAL SERVICE, Users\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Change the time zone\u0027 is set to \u0027Administrators, LOCAL SERVICE, Users\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.10",
+        "Title":  "Ensure \u0027Create a pagefile\u0027 is set to \u0027Administrators\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Create a pagefile\u0027 is set to \u0027Administrators\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.11",
+        "Title":  "Ensure \u0027Create a token object\u0027 is set to \u0027No One\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Create a token object\u0027 is allowed",
+        "Remediation":  "Restrict \u0027Create a token object\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.2.12",
+        "Title":  "Ensure \u0027Create global objects\u0027 is set to \u0027Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Create global objects\u0027 is set to \u0027Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.13",
+        "Title":  "Ensure \u0027Create permanent shared objects\u0027 is set to \u0027No One\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Create permanent shared objects\u0027 is allowed",
+        "Remediation":  "Restrict \u0027Create permanent shared objects\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.2.14",
+        "Title":  "Configure \u0027Create symbolic links\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Create symbolic links\u0027 is allowed",
+        "Remediation":  "Restrict \u0027Create symbolic links\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.2.15",
+        "Title":  "Ensure \u0027Debug programs\u0027 is set to \u0027Administrators\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Debug programs\u0027 is set to \u0027Administrators\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.16",
+        "Title":  "Ensure \u0027Deny access to this computer from the network\u0027 to include \u0027Guests\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Deny access to this computer from the network\u0027 to include \u0027Guests\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.17",
+        "Title":  "Ensure \u0027Deny log on as a batch job\u0027 to include \u0027Guests\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Deny log on as a batch job\u0027 to include \u0027Guests\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.18",
+        "Title":  "Ensure \u0027Deny log on as a service\u0027 to include \u0027Guests\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Deny log on as a service\u0027 to include \u0027Guests\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.19",
+        "Title":  "Ensure \u0027Deny log on locally\u0027 to include \u0027Guests\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Deny log on locally\u0027 to include \u0027Guests\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.20",
+        "Title":  "Ensure \u0027Deny log on through Remote Desktop Services\u0027 to include \u0027Guests\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Deny log on through Remote Desktop Services\u0027 to include \u0027Guests\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.21",
+        "Title":  "Ensure \u0027Enable computer and user accounts to be trusted for delegation\u0027 is set to \u0027No One\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Enable computer and user accounts to be trusted for delegation\u0027 is enabled",
+        "Remediation":  "Disable the delegation trust setting via GPO or registry"
+    },
+    {
+        "Control":  "2.2.22",
+        "Title":  "Ensure \u0027Force shutdown from a remote system\u0027 is set to \u0027Administrators\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Force shutdown from a remote system\u0027 is set to \u0027Administrators\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.23",
+        "Title":  "Ensure \u0027Generate security audits\u0027 is set to \u0027LOCAL SERVICE, NETWORK SERVICE\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Generate security audits\u0027 is set to \u0027LOCAL SERVICE, NETWORK SERVICE\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.24",
+        "Title":  "Ensure \u0027Impersonate a client after authentication\u0027 is set to \u0027Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Impersonate a client after authentication\u0027 is set to \u0027Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.25",
+        "Title":  "Ensure \u0027Increase scheduling priority\u0027 is set to \u0027Administrators, Window Manager\\\\Window Manager Group\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Increase scheduling priority\u0027 is set to \u0027Administrators, Window Manager\\\\Window Manager Group\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.26",
+        "Title":  "Ensure \u0027Load and unload device drivers\u0027 is set to \u0027Administrators\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Load and unload device drivers\u0027 is set to \u0027Administrators\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.27",
+        "Title":  "Ensure \u0027Lock pages in memory\u0027 is set to \u0027No One\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Lock pages in memory\u0027 is allowed",
+        "Remediation":  "Restrict \u0027Lock pages in memory\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.2.30",
+        "Title":  "Ensure \u0027Manage auditing and security log\u0027 is set to \u0027Administrators\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Manage auditing and security log\u0027 is set to \u0027Administrators\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.31",
+        "Title":  "Ensure \u0027Modify an object label\u0027 is set to \u0027No One\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Modify an object label\u0027 is allowed",
+        "Remediation":  "Restrict \u0027Modify an object label\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.2.32",
+        "Title":  "Ensure \u0027Modify firmware environment values\u0027 is set to \u0027Administrators\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Modify firmware environment values\u0027 is set to \u0027Administrators\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.33",
+        "Title":  "Ensure \u0027Perform volume maintenance tasks\u0027 is set to \u0027Administrators\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Perform volume maintenance tasks\u0027 is set to \u0027Administrators\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.34",
+        "Title":  "Ensure \u0027Profile single process\u0027 is set to \u0027Administrators\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Profile single process\u0027 is set to \u0027Administrators\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.35",
+        "Title":  "Ensure \u0027Profile system performance\u0027 is set to \u0027Administrators, NT SERVICE\\\\WdiServiceHost\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Profile system performance\u0027 is set to \u0027Administrators, NT SERVICE\\\\WdiServiceHost\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.36",
+        "Title":  "Ensure \u0027Replace a process level token\u0027 is set to \u0027LOCAL SERVICE, NETWORK SERVICE\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Replace a process level token\u0027 is set to \u0027LOCAL SERVICE, NETWORK SERVICE\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.37",
+        "Title":  "Ensure \u0027Restore files and directories\u0027 is set to \u0027Administrators\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Restore files and directories\u0027 is set to \u0027Administrators\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.38",
+        "Title":  "Ensure \u0027Shut down the system\u0027 is set to \u0027Administrators, Users\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Shut down the system\u0027 is set to \u0027Administrators, Users\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.2.39",
+        "Title":  "Ensure \u0027Take ownership of files or other objects\u0027 is set to \u0027Administrators\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Take ownership of files or other objects\u0027 is set to \u0027Administrators\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "2.3.1.1",
+        "Title":  "Ensure \u0027Accounts: Block Microsoft accounts\u0027 is set to \u0027Users can\u0027t add or log on with Microsoft accounts\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Block Microsoft accounts\u0027 is not configured correctly",
+        "Remediation":  "Set \u0027Accounts: Block Microsoft accounts\u0027 to \u0027Users can\u0027t add or log on with Microsoft accounts\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.3.1.2",
+        "Title":  "Ensure \u0027Accounts: Guest account status\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Guest account status\u0027 is enabled",
+        "Remediation":  "Disable the guest account via GPO or registry"
+    },
+    {
+        "Control":  "2.3.1.3",
+        "Title":  "Ensure \u0027Accounts: Limit local account use of blank passwords to console logon only\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Limit local account use of blank passwords\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.1.4",
+        "Title":  "Configure \u0027Accounts: Rename administrator account\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Administrator\u0027 account has been renamed",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.1.5",
+        "Title":  "Configure \u0027Accounts: Rename guest account\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Guest\u0027 account has been renamed",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.2.1",
+        "Title":  "Ensure \u0027Audit: Force audit policy subcategory settings (Windows Vista or later) to override audit policy category settings\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Force audit policy subcategory settings\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.2.2",
+        "Title":  "Ensure \u0027Audit: Shut down system immediately if unable to log security audits\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Shut down system immediately if unable to log security audits\u0027 is enabled",
+        "Remediation":  "Disable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.7.1",
+        "Title":  "Ensure \u0027Interactive logon: Do not require CTRL+ALT+DEL\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Do not require CTRL+ALT+DEL\u0027 is enabled",
+        "Remediation":  "Disable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.7.2",
+        "Title":  "Ensure \u0027Interactive logon: Don\u0027t display last signed-in\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Don\u0027t display last signed-in\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.7.4",
+        "Title":  "Ensure \u0027Interactive logon: Machine inactivity limit\u0027 is set to \u0027900 or fewer second(s), but not 0\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Machine inactivity limit\u0027 is not set",
+        "Remediation":  "Set the machine inactivity limit to 900 seconds via GPO or registry"
+    },
+    {
+        "Control":  "2.3.7.5",
+        "Title":  "Configure \u0027Interactive logon: Message text for users attempting to log on\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Message text for users attempting to log on\u0027 is configured",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.7.6",
+        "Title":  "Configure \u0027Interactive logon: Message title for users attempting to log on\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Message title for users attempting to log on\u0027 is configured",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.7.7",
+        "Title":  "Ensure \u0027Interactive logon: Prompt user to change password before expiration\u0027 is set to \u0027between 5 and 14 days\u0027",
+        "Status":  "Fail",
+        "Actual":  "Password change reminder is not set",
+        "Remediation":  "Set the reminder to a value between 5 and 14 days via GPO or registry"
+    },
+    {
+        "Control":  "2.3.7.8",
+        "Title":  "Ensure \u0027Interactive logon: Smart card removal behavior\u0027 is set to \u0027Lock Workstation\u0027 or higher",
+        "Status":  "Fail",
+        "Actual":  "Smart card removal behavior is not set to \u0027Lock Workstation\u0027",
+        "Remediation":  "Set the smart card removal behavior to \u0027Lock Workstation\u0027 or higher via GPO or registry"
+    },
+    {
+        "Control":  "2.3.8.1",
+        "Title":  "Ensure \u0027Microsoft network client: Digitally sign communications (always)\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Digitally sign communications (always)\u0027 is enabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.8.2",
+        "Title":  "Ensure \u0027Microsoft network client: Digitally sign communications (if server agrees)\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Digitally sign communications (if server agrees)\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.8.3",
+        "Title":  "Ensure \u0027Microsoft network client: Send unencrypted password to third-party SMB servers\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Send unencrypted password to third-party SMB servers\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.9.1",
+        "Title":  "Ensure \u0027Microsoft network server: Amount of idle time required before suspending session\u0027 is set to \u002715 or fewer minute(s)\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Amount of idle time before suspending session\u0027 is set to 15 minutes",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.9.2",
+        "Title":  "Ensure \u0027Microsoft network server: Digitally sign communications (always)\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Digitally sign communications (always)\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.9.3",
+        "Title":  "Ensure \u0027Microsoft network server: Digitally sign communications (if client agrees)\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Digitally sign communications (if client agrees)\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.9.4",
+        "Title":  "Ensure \u0027Microsoft network server: Disconnect clients when logon hours expire\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Disconnect clients when logon hours expire\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.9.5",
+        "Title":  "Ensure \u0027Microsoft network server: Server SPN target name validation level\u0027 is set to \u0027Accept if provided by client\u0027 or higher",
+        "Status":  "Fail",
+        "Actual":  "\u0027Server SPN target name validation level\u0027 is not configured correctly",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.10.1",
+        "Title":  "Ensure \u0027Network access: Allow anonymous SID/Name translation\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Allow anonymous SID/Name translation\u0027 is enabled",
+        "Remediation":  "Disable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.10.2",
+        "Title":  "Ensure \u0027Network access: Do not allow anonymous enumeration of SAM accounts\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Do not allow anonymous enumeration of SAM accounts\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.10.3",
+        "Title":  "Ensure \u0027Network access: Do not allow anonymous enumeration of SAM accounts and shares\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Do not allow anonymous enumeration of SAM accounts and shares\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.10.4",
+        "Title":  "Ensure \u0027Network access: Do not allow storage of passwords and credentials for network authentication\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Do not allow storage of passwords and credentials\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.10.5",
+        "Title":  "Ensure \u0027Network access: Let Everyone permissions apply to anonymous users\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Let Everyone permissions apply to anonymous users\u0027 is enabled",
+        "Remediation":  "Disable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.10.6",
+        "Title":  "Ensure \u0027Network access: Named Pipes that can be accessed anonymously\u0027 is set to \u0027None\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Named Pipes that can be accessed anonymously\u0027 is set to None",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.10.7",
+        "Title":  "Ensure \u0027Network access: Remotely accessible registry paths\u0027 is configured",
+        "Status":  "Fail",
+        "Actual":  "\u0027Remotely accessible registry paths\u0027 is not configured",
+        "Remediation":  "Configure the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.10.8",
+        "Title":  "Ensure \u0027Network access: Remotely accessible registry paths and sub-paths\u0027 is configured",
+        "Status":  "Fail",
+        "Actual":  "\u0027Remotely accessible registry paths and sub-paths\u0027 is not configured",
+        "Remediation":  "Configure the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.10.9",
+        "Title":  "Ensure \u0027Network access: Restrict anonymous access to Named Pipes and Shares\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Restrict anonymous access to Named Pipes and Shares\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.10.10",
+        "Title":  "Ensure \u0027Network access: Restrict clients allowed to make remote calls to SAM\u0027 is set to \u0027Administrators: Remote Access: Allow\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Restrict clients allowed to make remote calls to SAM\u0027 is not configured properly",
+        "Remediation":  "Configure the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.10.11",
+        "Title":  "Ensure \u0027Network access: Shares that can be accessed anonymously\u0027 is set to \u0027None\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Shares that can be accessed anonymously\u0027 is set to None",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.10.12",
+        "Title":  "Ensure \u0027Network access: Sharing and security model for local accounts\u0027 is set to \u0027Classic - local users authenticate as themselves\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Sharing and security model for local accounts\u0027 is not set to \u0027Classic\u0027",
+        "Remediation":  "Set the model to \u0027Classic\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.1",
+        "Title":  "Ensure \u0027Network security: Allow Local System to use computer identity for NTLM\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network security: Allow Local System to use computer identity for NTLM\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.2",
+        "Title":  "Ensure \u0027Network security: Allow LocalSystem NULL session fallback\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network security: Allow LocalSystem NULL session fallback\u0027 is enabled",
+        "Remediation":  "Disable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.3",
+        "Title":  "Ensure \u0027Network Security: Allow PKU2U authentication requests to this computer to use online identities\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network Security: Allow PKU2U authentication requests\u0027 is enabled",
+        "Remediation":  "Disable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.4",
+        "Title":  "Ensure \u0027Network security: Configure encryption types allowed for Kerberos\u0027 is set to \u0027AES128_HMAC_SHA1, AES256_HMAC_SHA1, Future encryption types\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network security: Configure encryption types allowed for Kerberos\u0027 is not set correctly",
+        "Remediation":  "Configure the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.5",
+        "Title":  "Ensure \u0027Network security: Do not store LAN Manager hash value on next password change\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network security: Do not store LAN Manager hash value on next password change\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.6",
+        "Title":  "Ensure \u0027Network security: Force logoff when logon hours expire\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network security: Force logoff when logon hours expire\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.7",
+        "Title":  "Ensure \u0027Network security: LAN Manager authentication level\u0027 is set to \u0027Send NTLMv2 response only. Refuse LM \u0026 NTLM\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network security: LAN Manager authentication level\u0027 is not configured correctly",
+        "Remediation":  "Set the LAN Manager authentication level to \u00275\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.8",
+        "Title":  "Ensure \u0027Network security: LDAP client signing requirements\u0027 is set to \u0027Negotiate signing\u0027 or higher",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network security: LDAP client signing requirements\u0027 is not set to \u0027Negotiate signing\u0027 or higher",
+        "Remediation":  "Configure the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.9",
+        "Title":  "Ensure \u0027Network security: Minimum session security for NTLM SSP based (including secure RPC) clients\u0027 is set to \u0027Require NTLMv2 session security, Require 128-bit encryption\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network security: Minimum session security for NTLM SSP based clients\u0027 is not configured correctly",
+        "Remediation":  "Set to \u0027Require NTLMv2 session security, Require 128-bit encryption\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.10",
+        "Title":  "Ensure \u0027Network security: Minimum session security for NTLM SSP based (including secure RPC) servers\u0027 is set to \u0027Require NTLMv2 session security, Require 128-bit encryption\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network security: Minimum session security for NTLM SSP based servers\u0027 is not configured correctly",
+        "Remediation":  "Set to \u0027Require NTLMv2 session security, Require 128-bit encryption\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.11",
+        "Title":  "Ensure \u0027Network security: Restrict NTLM: Audit Incoming NTLM Traffic\u0027 is set to \u0027Enable auditing for all accounts\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network security: Restrict NTLM: Audit Incoming NTLM Traffic\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.11.12",
+        "Title":  "Ensure \u0027Network security: Restrict NTLM: Outgoing NTLM traffic to remote servers\u0027 is set to \u0027Audit all\u0027 or higher",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network security: Restrict NTLM: Outgoing NTLM traffic to remote servers\u0027 is not set to \u0027Audit all\u0027",
+        "Remediation":  "Configure the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.15.1",
+        "Title":  "Ensure \u0027System objects: Require case insensitivity for non-Windows subsystems\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027System objects: Require case insensitivity for non-Windows subsystems\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.15.2",
+        "Title":  "Ensure \u0027System objects: Strengthen default permissions of internal system objects (e.g. Symbolic Links)\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027System objects: Strengthen default permissions of internal system objects\u0027 is disabled",
+        "Remediation":  "Enable the setting via GPO or registry"
+    },
+    {
+        "Control":  "2.3.17.1",
+        "Title":  "Ensure \u0027User Account Control: Admin Approval Mode for the Built-in Administrator account\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027User Account Control: Admin Approval Mode for the Built-in Administrator account\u0027 is enabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.17.2",
+        "Title":  "Ensure \u0027User Account Control: Behavior of the elevation prompt for administrators in Admin Approval Mode\u0027 is set to \u0027Prompt for consent on the secure desktop\u0027 or higher",
+        "Status":  "Fail",
+        "Actual":  "\u0027User Account Control: Behavior of the elevation prompt for administrators\u0027 is not set to the correct level",
+        "Remediation":  "Set the elevation prompt to \u0027Prompt for consent on the secure desktop\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.3.17.3",
+        "Title":  "Ensure \u0027User Account Control: Behavior of the elevation prompt for standard users\u0027 is set to \u0027Automatically deny elevation requests\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027User Account Control: Behavior of the elevation prompt for standard users\u0027 is not set correctly",
+        "Remediation":  "Set to \u0027Automatically deny elevation requests\u0027 via GPO or registry"
+    },
+    {
+        "Control":  "2.3.17.4",
+        "Title":  "Ensure \u0027User Account Control: Detect application installations and prompt for elevation\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027User Account Control: Detect application installations and prompt for elevation\u0027 is enabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.17.5",
+        "Title":  "Ensure \u0027User Account Control: Only elevate UIAccess applications that are installed in secure locations\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027User Account Control: Only elevate UIAccess applications that are installed in secure locations\u0027 is enabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.17.6",
+        "Title":  "Ensure \u0027User Account Control: Run all administrators in Admin Approval Mode\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027User Account Control: Run all administrators in Admin Approval Mode\u0027 is enabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.17.7",
+        "Title":  "Ensure \u0027User Account Control: Switch to the secure desktop when prompting for elevation\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027User Account Control: Switch to the secure desktop when prompting for elevation\u0027 is enabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "2.3.17.8",
+        "Title":  "Ensure \u0027User Account Control: Virtualize file and registry write failures to peruser locations\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027User Account Control: Virtualize file and registry write failures to peruser locations\u0027 is enabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.3",
+        "Title":  "Ensure \u0027Computer Browser (Browser)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Computer Browser (Browser)\u0027 is running",
+        "Remediation":  "Disable or uninstall the service"
+    },
+    {
+        "Control":  "5.6",
+        "Title":  "Ensure \u0027IIS Admin Service (IISADMIN)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027IIS Admin Service (IISADMIN)\u0027 is running",
+        "Remediation":  "Disable or uninstall the service"
+    },
+    {
+        "Control":  "5.7",
+        "Title":  "Ensure \u0027Infrared monitor service (irmon)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Infrared monitor service (irmon)\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.9",
+        "Title":  "Ensure \u0027LxssManager (LxssManager)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027LxssManager (LxssManager)\u0027 is running",
+        "Remediation":  "Disable or uninstall the service"
+    },
+    {
+        "Control":  "5.10",
+        "Title":  "Ensure \u0027Microsoft FTP Service (FTPSVC)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Microsoft FTP Service (FTPSVC)\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.12",
+        "Title":  "Ensure \u0027OpenSSH SSH Server (sshd)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027OpenSSH SSH Server (sshd)\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.23",
+        "Title":  "Ensure \u0027Remote Procedure Call (RPC) Locator (RpcLocator)\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Remote Procedure Call (RPC) Locator\u0027 is running",
+        "Remediation":  "Disable the service"
+    },
+    {
+        "Control":  "5.25",
+        "Title":  "Ensure \u0027Routing and Remote Access (RemoteAccess)\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Routing and Remote Access\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.27",
+        "Title":  "Ensure \u0027Simple TCP/IP Services (simptcp)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Simple TCP/IP Services\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.29",
+        "Title":  "Ensure \u0027Special Administration Console Helper (sacsvr)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Special Administration Console Helper\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.30",
+        "Title":  "Ensure \u0027SSDP Discovery (SSDPSRV)\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027SSDP Discovery (SSDPSRV)\u0027 is running",
+        "Remediation":  "Disable the service"
+    },
+    {
+        "Control":  "5.31",
+        "Title":  "Ensure \u0027UPnP Device Host (upnphost)\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027UPnP Device Host (upnphost)\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.32",
+        "Title":  "Ensure \u0027Web Management Service (WMSvc)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Web Management Service (WMSvc)\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.35",
+        "Title":  "Ensure \u0027Windows Media Player Network Sharing Service (WMPNetworkSvc)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Windows Media Player Network Sharing Service (WMPNetworkSvc)\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.36",
+        "Title":  "Ensure \u0027Windows Mobile Hotspot Service (icssvc)\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Windows Mobile Hotspot Service (icssvc)\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.40",
+        "Title":  "Ensure \u0027World Wide Web Publishing Service (W3SVC)\u0027 is set to \u0027Disabled\u0027 or \u0027Not Installed\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027World Wide Web Publishing Service (W3SVC)\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.41",
+        "Title":  "Ensure \u0027Xbox Accessory Management Service (XboxGipSvc)\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Xbox Accessory Management Service (XboxGipSvc)\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.42",
+        "Title":  "Ensure \u0027Xbox Live Auth Manager (XblAuthManager)\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Xbox Live Auth Manager (XblAuthManager)\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "5.43",
+        "Title":  "Ensure \u0027Xbox Live Game Save (XblGameSave)\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Xbox Live Game Save (XblGameSave)\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "9.2.1",
+        "Title":  "Ensure \u0027Windows Firewall: Private: Firewall state\u0027 is set to \u0027On (recommended)\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Windows Firewall: Private: Firewall state\u0027 is On",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "9.2.2",
+        "Title":  "Ensure \u0027Windows Firewall: Private: Inbound connections\u0027 is set to \u0027Block (default)\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Private: Inbound connections\u0027 is Allowed",
+        "Remediation":  "Configure the firewall to block inbound connections"
+    },
+    {
+        "Control":  "9.2.3",
+        "Title":  "Ensure \u0027Windows Firewall: Private: Settings: Display a notification\u0027 is set to \u0027No\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Private: Display a notification\u0027 is Enabled",
+        "Remediation":  "Disable the notification"
+    },
+    {
+        "Control":  "9.2.4",
+        "Title":  "Ensure \u0027Windows Firewall: Private: Logging: Name\u0027 is set to \u0027%SystemRoot%\\System32\\logfiles\\firewall\\privatefw.log\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Private: Logging: Name\u0027 is not set",
+        "Remediation":  "Set the logging name to \u0027%SystemRoot%\\System32\\logfiles\\firewall\\privatefw.log\u0027"
+    },
+    {
+        "Control":  "9.2.5",
+        "Title":  "Ensure \u0027Windows Firewall: Private: Logging: Size limit (KB)\u0027 is set to \u002716,384 KB or greater\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Private: Logging: Size limit\u0027 is not set",
+        "Remediation":  "Set the log size limit to 16,384 KB or greater"
+    },
+    {
+        "Control":  "9.2.6",
+        "Title":  "Ensure \u0027Windows Firewall: Private: Logging: Log dropped packets\u0027 is set to \u0027Yes\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Private: Logging: Log dropped packets\u0027 is disabled",
+        "Remediation":  "Enable logging of dropped packets"
+    },
+    {
+        "Control":  "9.2.7",
+        "Title":  "Ensure \u0027Windows Firewall: Private: Logging: Log successful connections\u0027 is set to \u0027Yes\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Private: Logging: Log successful connections\u0027 is disabled",
+        "Remediation":  "Enable logging of successful connections"
+    },
+    {
+        "Control":  "9.3.1",
+        "Title":  "Ensure \u0027Windows Firewall: Public: Firewall state\u0027 is set to \u0027On (recommended)\u0027",
+        "Status":  "Pass",
+        "Actual":  "\u0027Windows Firewall: Public: Firewall state\u0027 is On",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "9.3.2",
+        "Title":  "Ensure \u0027Windows Firewall: Public: Inbound connections\u0027 is set to \u0027Block (default)\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Public: Inbound connections\u0027 is Allowed",
+        "Remediation":  "Configure the firewall to block inbound connections"
+    },
+    {
+        "Control":  "9.3.3",
+        "Title":  "Ensure \u0027Windows Firewall: Public: Settings: Display a notification\u0027 is set to \u0027No\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Public: Display a notification\u0027 is Enabled",
+        "Remediation":  "Disable the notification"
+    },
+    {
+        "Control":  "9.3.4",
+        "Title":  "Ensure \u0027Windows Firewall: Public: Settings: Apply local firewall rules\u0027 is set to \u0027No\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Public: Apply local firewall rules\u0027 is Enabled",
+        "Remediation":  "Disable the application of local firewall rules"
+    },
+    {
+        "Control":  "9.3.5",
+        "Title":  "Ensure \u0027Windows Firewall: Public: Settings: Apply local connection security rules\u0027 is set to \u0027No\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Public: Apply local connection security rules\u0027 is Enabled",
+        "Remediation":  "Disable the application of local connection security rules"
+    },
+    {
+        "Control":  "9.3.6",
+        "Title":  "Ensure \u0027Windows Firewall: Public: Logging: Name\u0027 is set to \u0027%SystemRoot%\\System32\\logfiles\\firewall\\publicfw.log\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Public: Logging: Name\u0027 is not set",
+        "Remediation":  "Set the logging name to \u0027%SystemRoot%\\System32\\logfiles\\firewall\\publicfw.log\u0027"
+    },
+    {
+        "Control":  "9.3.7",
+        "Title":  "Ensure \u0027Windows Firewall: Public: Logging: Size limit (KB)\u0027 is set to \u002716,384 KB or greater\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Public: Logging: Size limit\u0027 is not set",
+        "Remediation":  "Set the log size limit to 16,384 KB or greater"
+    },
+    {
+        "Control":  "9.3.8",
+        "Title":  "Ensure \u0027Windows Firewall: Public: Logging: Log dropped packets\u0027 is set to \u0027Yes\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Public: Logging: Log dropped packets\u0027 is disabled",
+        "Remediation":  "Enable logging of dropped packets"
+    },
+    {
+        "Control":  "9.3.9",
+        "Title":  "Ensure \u0027Windows Firewall: Public: Logging: Log successful connections\u0027 is set to \u0027Yes\u0027",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows Firewall: Public: Logging: Log successful connections\u0027 is disabled",
+        "Remediation":  "Enable logging of successful connections"
+    },
+    {
+        "Control":  "17.1.1",
+        "Title":  "Ensure \u0027Audit Credential Validation\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Credential Validation\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.2.1",
+        "Title":  "Ensure \u0027Audit Application Group Management\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Application Group Management\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.2.2",
+        "Title":  "Ensure \u0027Audit Security Group Management\u0027 is set to include \u0027Success\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Security Group Management\u0027 is set to include \u0027Success\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.2.3",
+        "Title":  "Ensure \u0027Audit User Account Management\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit User Account Management\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.3.1",
+        "Title":  "Ensure \u0027Audit PNP Activity\u0027 is set to include \u0027Success\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit PNP Activity\u0027 is set to include \u0027Success\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.3.2",
+        "Title":  "Ensure \u0027Audit Process Creation\u0027 is set to include \u0027Success\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Process Creation\u0027 is set to include \u0027Success\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.5.1",
+        "Title":  "Ensure \u0027Audit Account Lockout\u0027 is set to include \u0027Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Account Lockout\u0027 is set to include \u0027Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.5.2",
+        "Title":  "Ensure \u0027Audit Group Membership\u0027 is set to include \u0027Success\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Group Membership\u0027 is set to include \u0027Success\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.5.3",
+        "Title":  "Ensure \u0027Audit Logoff\u0027 is set to include \u0027Success\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Logoff\u0027 is set to include \u0027Success\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.5.4",
+        "Title":  "Ensure \u0027Audit Logon\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Logon\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.5.5",
+        "Title":  "Ensure \u0027Audit Other Logon/Logoff Events\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Other Logon/Logoff Events\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.5.6",
+        "Title":  "Ensure \u0027Audit Special Logon\u0027 is set to include \u0027Success\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Special Logon\u0027 is set to include \u0027Success\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.6.1",
+        "Title":  "Ensure \u0027Audit Detailed File Share\u0027 is set to include \u0027Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Detailed File Share\u0027 is set to include \u0027Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.6.2",
+        "Title":  "Ensure \u0027Audit File Share\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit File Share\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.6.3",
+        "Title":  "Ensure \u0027Audit Other Object Access Events\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Other Object Access Events\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.6.4",
+        "Title":  "Ensure \u0027Audit Removable Storage\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Removable Storage\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.7.1",
+        "Title":  "Ensure \u0027Audit Audit Policy Change\u0027 is set to include \u0027Success\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Audit Policy Change\u0027 is set to include \u0027Success\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.7.2",
+        "Title":  "Ensure \u0027Audit Authentication Policy Change\u0027 is set to include \u0027Success\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Authentication Policy Change\u0027 is set to include \u0027Success\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.7.3",
+        "Title":  "Ensure \u0027Audit Authorization Policy Change\u0027 is set to include \u0027Success\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Authorization Policy Change\u0027 is set to include \u0027Success\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.7.4",
+        "Title":  "Ensure \u0027Audit MPSSVC Rule-Level Policy Change\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit MPSSVC Rule-Level Policy Change\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.7.5",
+        "Title":  "Ensure \u0027Audit Other Policy Change Events\u0027 is set to include \u0027Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Other Policy Change Events\u0027 is set to include \u0027Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.9.1",
+        "Title":  "Ensure \u0027Audit IPsec Driver\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit IPsec Driver\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.9.2",
+        "Title":  "Ensure \u0027Audit Other System Events\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Other System Events\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.9.3",
+        "Title":  "Ensure \u0027Audit Security State Change\u0027 is set to include \u0027Success\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Security State Change\u0027 is set to include \u0027Success\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.9.4",
+        "Title":  "Ensure \u0027Audit Security System Extension\u0027 is set to include \u0027Success\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit Security System Extension\u0027 is set to include \u0027Success\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "17.9.5",
+        "Title":  "Ensure \u0027Audit System Integrity\u0027 is set to \u0027Success and Failure\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Audit System Integrity\u0027 is set to \u0027Success and Failure\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "18.1.1.1",
+        "Title":  "Ensure \u0027Prevent enabling lock screen camera\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Prevent enabling lock screen camera\u0027 is set to \u0027Enabled\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "18.1.1.2",
+        "Title":  "Ensure \u0027Prevent enabling lock screen slide show\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Prevent enabling lock screen slide show\u0027 is set to \u0027Enabled\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "18.1.2.2",
+        "Title":  "Ensure \u0027Allow users to enable online speech recognition services\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Allow users to enable online speech recognition services\u0027 is set to \u0027Disabled\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "18.4.1",
+        "Title":  "Ensure \u0027Configure RPC packet level privacy setting for incoming connections\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Configure RPC packet level privacy setting for incoming connections\u0027 is set to \u0027Enabled\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "18.4.2",
+        "Title":  "Ensure \u0027Configure SMB v1 client driver\u0027 is set to \u0027Enabled: Disable driver (recommended)\u0027",
+        "Status":  "Pass",
+        "Actual":  "SMB v1 client is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.4.3",
+        "Title":  "Ensure \u0027Configure SMB v1 server\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Pass",
+        "Actual":  "SMB v1 server is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.4.4",
+        "Title":  "Ensure \u0027Enable Certificate Padding\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Enable Certificate Padding\u0027 is set to \u0027Enabled\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "18.4.5",
+        "Title":  "Ensure \u0027Enable Structured Exception Handling Overwrite Protection (SEHOP)\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027Enable Structured Exception Handling Overwrite Protection (SEHOP)\u0027 is set to \u0027Enabled\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "18.4.6",
+        "Title":  "Ensure \u0027NetBT NodeType configuration\u0027 is set to \u0027Enabled: P-node (recommended)\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027NetBT NodeType configuration\u0027 is set to \u0027Enabled: P-node (recommended)\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "18.4.7",
+        "Title":  "Ensure \u0027WDigest Authentication\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027WDigest Authentication\u0027 is set to \u0027Disabled\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "18.5.1",
+        "Title":  "Ensure \u0027MSS: (AutoAdminLogon) Enable Automatic Logon\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027MSS: (AutoAdminLogon) Enable Automatic Logon\u0027 is set to \u0027Disabled\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "18.5.2",
+        "Title":  "Ensure \u0027MSS: (DisableIPSourceRouting IPv6) IP source routing protection level\u0027 is set to \u0027Enabled: Highest protection, source routing is completely disabled\u0027",
+        "Status":  "Not Found/Configured",
+        "Actual":  "Key/Value not found or inaccessible",
+        "Remediation":  "Review Ensure \u0027MSS: (DisableIPSourceRouting IPv6) IP source routing protection level\u0027 is set to \u0027Enabled: Highest protection, source routing is completely disabled\u0027 and configure per CIS Benchmark"
+    },
+    {
+        "Control":  "18.5.3",
+        "Title":  "Ensure \u0027MSS: (DisableIPSourceRouting) IP source routing protection level\u0027 is set to \u0027Enabled: Highest protection, source routing is completely disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Set DisableIPSourceRouting to 2 (Highest protection)"
+    },
+    {
+        "Control":  "18.5.5",
+        "Title":  "Ensure \u0027MSS: (EnableICMPRedirect) Allow ICMP redirects to override OSPF generated routes\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Set EnableICMPRedirect to 0 (Disabled)"
+    },
+    {
+        "Control":  "18.5.7",
+        "Title":  "Ensure \u0027MSS: (NoNameReleaseOnDemand) Allow the computer to ignore NetBIOS name release requests except from WINS servers\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Set NoNameReleaseOnDemand to 1 (Enabled)"
+    },
+    {
+        "Control":  "18.5.9",
+        "Title":  "Ensure \u0027MSS: (SafeDllSearchMode) Enable Safe DLL search mode\u0027 is set to \u0027Enabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Set SafeDllSearchMode to 1 (Enabled)"
+    },
+    {
+        "Control":  "18.5.10",
+        "Title":  "Ensure \u0027MSS: (ScreenSaverGracePeriod) The time in seconds before the screen saver grace period expires\u0027 is set to \u0027Enabled: 5 or fewer seconds\u0027",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Set ScreenSaverGracePeriod to 5 or fewer seconds"
+    },
+    {
+        "Control":  "18.5.13",
+        "Title":  "Ensure \u0027MSS: (WarningLevel) Percentage threshold for the security event log at which the system will generate a warning\u0027 is set to \u0027Enabled: 90% or less\u0027",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Set WarningLevel to 90% or less"
+    },
+    {
+        "Control":  "18.6.4.1",
+        "Title":  "Ensure \u0027Configure DNS over HTTPS (DoH) name resolution\u0027 is set to \u0027Enabled: Allow DoH\u0027 or higher",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Enable DNS over HTTPS via registry or GPO"
+    },
+    {
+        "Control":  "18.6.8.1",
+        "Title":  "Ensure \u0027Enable insecure guest logons\u0027 is set to \u0027Disabled\u0027",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Disable insecure guest logons via registry"
+    },
+    {
+        "Control":  "18.6.11.2",
+        "Title":  "Ensure \u0027Prohibit installation and configuration of Network Bridge on your DNS domain network\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Set NC_AllowNetBridge to 0 via registry"
+    },
+    {
+        "Control":  "18.6.11.3",
+        "Title":  "Ensure \u0027Prohibit use of Internet Connection Sharing on your DNS domain network\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Set NoInternetSharing to 1 via registry"
+    },
+    {
+        "Control":  "18.6.14.1",
+        "Title":  "Ensure \u0027Hardened UNC Paths\u0027 is set to \u0027Enabled, with \"Require Mutual Authentication\", \"Require Integrity\", and â€œRequire Privacyâ€ set for all NETLOGON and SYSVOL shares\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Hardened UNC Paths not configured correctly",
+        "Remediation":  "Ensure \u0027Require Mutual Authentication\u0027, \u0027Require Integrity\u0027, and \u0027Require Privacy\u0027 are enabled via registry"
+    },
+    {
+        "Control":  "18.6.21.1",
+        "Title":  "Ensure \u0027Minimize the number of simultaneous connections to the Internet or a Windows Domain\u0027 is set to \u0027Enabled: 3 = Prevent Wi-Fi when on Ethernet\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Set MaxConnectionsPer1_0Server to 3 via registry"
+    },
+    {
+        "Control":  "18.6.23.2.1",
+        "Title":  "Ensure \u0027Allow Windows to automatically connect to suggested open hotspots, to networks shared by contacts, and to hotspots offering paid services\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Disable auto-connect to open hotspots via registry"
+    },
+    {
+        "Control":  "18.7.1",
+        "Title":  "Ensure \u0027Allow Print Spooler to accept client connections\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Disable print spooler client connections via registry"
+    },
+    {
+        "Control":  "18.7.2",
+        "Title":  "Ensure \u0027Configure Redirection Guard\u0027 is set to \u0027Enabled: Redirection Guard Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Enable Redirection Guard via registry"
+    },
+    {
+        "Control":  "18.7.3",
+        "Title":  "Ensure \u0027Configure RPC connection settings: Protocol to use for outgoing RPC connections\u0027 is set to \u0027Enabled: RPC over TCP\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027RPC over TCP\u0027 is not enabled",
+        "Remediation":  "Enable RPC over TCP via registry"
+    },
+    {
+        "Control":  "18.7.4",
+        "Title":  "Ensure \u0027Configure RPC connection settings: Use authentication for outgoing RPC connections\u0027 is set to \u0027Enabled: Default\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Use authentication for outgoing RPC connections\u0027 is not enabled",
+        "Remediation":  "Enable authentication for RPC via registry"
+    },
+    {
+        "Control":  "18.7.5",
+        "Title":  "Ensure \u0027Configure RPC listener settings: Protocols to allow for incoming RPC connections\u0027 is set to \u0027Enabled: RPC over TCP\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027RPC over TCP\u0027 is not allowed for incoming RPC connections",
+        "Remediation":  "Allow RPC over TCP via registry"
+    },
+    {
+        "Control":  "18.7.6",
+        "Title":  "Ensure \u0027Configure RPC listener settings: Authentication protocol to use for incoming RPC connections:\u0027 is set to \u0027Enabled: Negotiate\u0027 or higher (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Authentication protocol for incoming RPC connections\u0027 is not set to \u0027Negotiate\u0027",
+        "Remediation":  "Set to Negotiate via registry"
+    },
+    {
+        "Control":  "18.7.7",
+        "Title":  "Ensure \u0027Configure RPC over TCP port\u0027 is set to \u0027Enabled: 0\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Not Configured",
+        "Remediation":  "Set RpcPort to 0 (Disabled)"
+    },
+    {
+        "Control":  "18.7.8",
+        "Title":  "Ensure \u0027Limits print driver installation to Administrators\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Limits print driver installation to Administrators\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.7.9",
+        "Title":  "Ensure \u0027Manage processing of Queue-specific files\u0027 is set to \u0027Enabled: Limit Queue-specific files to Color profiles\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Queue-specific files\u0027 are not limited to color profiles",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.7.10",
+        "Title":  "Ensure \u0027Point and Print Restrictions: When installing drivers for a new connection\u0027 is set to \u0027Enabled: Show warning and elevation prompt\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "\u0027Show warning and elevation prompt\u0027 is enabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.7.11",
+        "Title":  "Ensure \u0027Point and Print Restrictions: When updating drivers for an existing connection\u0027 is set to \u0027Enabled: Show warning and elevation prompt\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "\u0027Show warning and elevation prompt\u0027 for updating drivers is enabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.9.3.1",
+        "Title":  "Ensure \u0027Include command line in process creation events\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Include command line in process creation events\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.4.1",
+        "Title":  "Ensure \u0027Encryption Oracle Remediation\u0027 is set to \u0027Enabled: Force Updated Clients\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Encryption Oracle Remediation\u0027 is not set to \u0027Force Updated Clients\u0027",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.4.2",
+        "Title":  "Ensure \u0027Remote host allows delegation of non-exportable credentials\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Remote host allows delegation of non-exportable credentials\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.5.2",
+        "Title":  "Ensure \u0027Turn On Virtualization Based Security: Select Platform Security Level\u0027 is set to \u0027Secure Boot\u0027 or higher (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Platform Security Level\u0027 is not set to \u0027Secure Boot\u0027",
+        "Remediation":  "Configure via Device Guard settings"
+    },
+    {
+        "Control":  "18.9.5.3",
+        "Title":  "Ensure \u0027Turn On Virtualization Based Security: Virtualization Based Protection of Code Integrity\u0027 is set to \u0027Enabled with UEFI lock\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Virtualization Based Protection of Code Integrity\u0027 is not enabled with UEFI lock",
+        "Remediation":  "Enable via Device Guard settings"
+    },
+    {
+        "Control":  "18.9.5.4",
+        "Title":  "Ensure \u0027Turn On Virtualization Based Security: Require UEFI Memory Attributes Table\u0027 is set to \u0027True (checked)\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027UEFI Memory Attributes Table\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.5.5",
+        "Title":  "Ensure \u0027Turn On Virtualization Based Security: Credential Guard Configuration\u0027 is set to \u0027Enabled with UEFI lock\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Credential Guard Configuration\u0027 is not enabled with UEFI lock",
+        "Remediation":  "Enable via Device Guard settings"
+    },
+    {
+        "Control":  "18.9.5.6",
+        "Title":  "Ensure \u0027Turn On Virtualization Based Security: Secure Launch Configuration\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Secure Launch Configuration\u0027 is not enabled",
+        "Remediation":  "Enable via Device Guard settings"
+    },
+    {
+        "Control":  "18.9.5.7",
+        "Title":  "Ensure \u0027Turn On Virtualization Based Security: Kernel-mode Hardware-enforced Stack Protection\u0027 is set to \u0027Enabled: Enabled in enforcement mode\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Kernel-mode Hardware-enforced Stack Protection\u0027 is not enabled in enforcement mode",
+        "Remediation":  "Enable via Device Guard settings"
+    },
+    {
+        "Control":  "18.9.7.2",
+        "Title":  "Ensure \u0027Prevent device metadata retrieval from the Internet\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Device metadata retrieval from the Internet\u0027 is not prevented",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.13.1",
+        "Title":  "Ensure \u0027Boot-Start Driver Initialization Policy\u0027 is set to \u0027Enabled: Good, unknown and bad but critical\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Boot-Start Driver Initialization Policy\u0027 is not set correctly",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.19.2",
+        "Title":  "Ensure \u0027Continue experiences on this device\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Continue experiences on this device\u0027 is enabled",
+        "Remediation":  "Set \u0027EnableCdp\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.9.20.1.2",
+        "Title":  "Ensure \u0027Turn off downloading of print drivers over HTTP\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Downloading print drivers over HTTP\u0027 is not disabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.9.20.1.6",
+        "Title":  "Ensure \u0027Turn off Internet download for Web publishing and online ordering wizards\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Internet download for Web publishing\u0027 is not disabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.9.26.1",
+        "Title":  "Ensure \u0027Allow Custom SSPs and APs to be loaded into LSASS\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Allow Custom SSPs and APs to be loaded into LSASS\u0027 is not disabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.9.26.2",
+        "Title":  "Ensure \u0027Configures LSASS to run as a protected process\u0027 is set to \u0027Enabled: Enabled with UEFI Lock\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027LSASS to run as a protected process\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.28.1",
+        "Title":  "Ensure \u0027Block user from showing account details on sign-in\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Block user from showing account details on sign-in\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.28.2",
+        "Title":  "Ensure \u0027Do not display network selection UI\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network selection UI\u0027 is not disabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.9.28.3",
+        "Title":  "Ensure \u0027Turn off app notifications on the lock screen\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027App notifications on the lock screen\u0027 are still turned on",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.9.28.4",
+        "Title":  "Ensure \u0027Turn on convenience PIN sign-in\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Convenience PIN sign-in\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.9.33.6.1",
+        "Title":  "Ensure \u0027Allow network connectivity during connected-standby (on battery)\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network connectivity during connected-standby (on battery)\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.9.33.6.2",
+        "Title":  "Ensure \u0027Allow network connectivity during connected-standby (plugged in)\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Network connectivity during connected-standby (plugged in)\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.9.33.6.5",
+        "Title":  "Ensure \u0027Require a password when a computer wakes (on battery)\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Password required on wake (on battery)\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.33.6.6",
+        "Title":  "Ensure \u0027Require a password when a computer wakes (plugged in)\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Password required on wake (plugged in)\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.35.1",
+        "Title":  "Ensure \u0027Configure Offer Remote Assistance\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Offer Remote Assistance\u0027 is not disabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.9.35.2",
+        "Title":  "Ensure \u0027Configure Solicited Remote Assistance\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Solicited Remote Assistance\u0027 is not disabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.9.36.1",
+        "Title":  "Ensure \u0027Enable RPC Endpoint Mapper Client Authentication\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027RPC Endpoint Mapper Client Authentication\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.36.2",
+        "Title":  "Ensure \u0027Restrict Unauthenticated RPC clients\u0027 is set to \u0027Enabled: Authenticated\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Restrict Unauthenticated RPC clients\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.9.51.1.1",
+        "Title":  "Ensure \u0027Enable Windows NTP Client\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Windows NTP Client\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.3.2",
+        "Title":  "Ensure \u0027Prevent non-admin users from installing packaged Windows apps\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Non-admin users\u0027 can install packaged apps",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.4.1",
+        "Title":  "Ensure \u0027Let Windows apps activate with voice while the system is locked\u0027 is set to \u0027Enabled: Force Deny\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Let Windows apps activate with voice while the system is locked\u0027 is not set to \u0027Force Deny\u0027",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.5.1",
+        "Title":  "Ensure \u0027Allow Microsoft accounts to be optional\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Allow Microsoft accounts to be optional\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.7.1",
+        "Title":  "Ensure \u0027Disallow Autoplay for non-volume devices\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Autoplay for non-volume devices\u0027 is enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.7.2",
+        "Title":  "Ensure \u0027Set the default behavior for AutoRun\u0027 is set to \u0027Enabled: Do not execute any autorun commands\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027AutoRun commands\u0027 are enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.7.3",
+        "Title":  "Ensure \u0027Turn off Autoplay\u0027 is set to \u0027Enabled: All drives\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Autoplay\u0027 is enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.8.1.1",
+        "Title":  "Ensure \u0027Configure enhanced anti-spoofing\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Enhanced anti-spoofing\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.12.1",
+        "Title":  "Ensure \u0027Turn off cloud consumer account state content\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Cloud consumer account state content\u0027 is not turned off",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.12.3",
+        "Title":  "Ensure \u0027Turn off Microsoft consumer experiences\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Microsoft consumer experiences\u0027 is not turned off",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.13.1",
+        "Title":  "Ensure \u0027Require pin for pairing\u0027 is set to \u0027Enabled: First Time\u0027 OR \u0027Enabled: Always\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Require pin for pairing\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.14.1",
+        "Title":  "Ensure \u0027Do not display the password reveal button\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Password reveal button\u0027 is not disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.14.2",
+        "Title":  "Ensure \u0027Enumerate administrator accounts on elevation\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "\u0027Enumerate administrator accounts on elevation\u0027 is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.10.14.3",
+        "Title":  "Ensure \u0027Prevent the use of security questions for local accounts\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Security questions for local accounts\u0027 are enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.15.1",
+        "Title":  "Ensure \u0027Allow Diagnostic Data\u0027 is set to \u0027Enabled: Diagnostic data off (not recommended)\u0027 or \u0027Enabled: Send required diagnostic data\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Diagnostic Data\u0027 collection is not set to \u0027Enabled\u0027",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.15.3",
+        "Title":  "Ensure \u0027Disable OneSettings Downloads\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027OneSettings downloads\u0027 are not disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.15.4",
+        "Title":  "Ensure \u0027Do not show feedback notifications\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Feedback notifications\u0027 are not disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.15.5",
+        "Title":  "Ensure \u0027Enable OneSettings Auditing\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027OneSettings Auditing\u0027 is not enabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.15.6",
+        "Title":  "Ensure \u0027Limit Diagnostic Log Collection\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Diagnostic log collection\u0027 is not limited",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.15.7",
+        "Title":  "Ensure \u0027Limit Dump Collection\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Dump collection\u0027 is not limited",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.15.8",
+        "Title":  "Ensure \u0027Toggle user control over Insider builds\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Control over Insider builds\u0027 is not disabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.16.1",
+        "Title":  "Ensure \u0027Download Mode\u0027 is NOT set to \u0027Enabled: Internet\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "\u0027Download Mode\u0027 is not set to \u0027Enabled: Internet\u0027",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.10.17.1",
+        "Title":  "Ensure \u0027Enable App Installer\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027App Installer\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.17.2",
+        "Title":  "Ensure \u0027Enable App Installer Experimental Features\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027App Installer Experimental Features\u0027 are enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.17.3",
+        "Title":  "Ensure \u0027Enable App Installer Hash Override\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027App Installer Hash Override\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.17.4",
+        "Title":  "Ensure \u0027Enable App Installer ms-appinstaller protocol\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "\u0027ms-appinstaller\u0027 protocol is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.10.25.1.1",
+        "Title":  "Ensure \u0027Application: Control Event Log behavior when the log file reaches its maximum size\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "\u0027Event Log retention\u0027 behavior is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.10.25.1.2",
+        "Title":  "Ensure \u0027Application: Specify the maximum log file size (KB)\u0027 is set to \u0027Enabled: 32,768 or greater\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "\u0027Application Event Log size\u0027 is 32,768 KB or greater",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.10.25.2.1",
+        "Title":  "Ensure \u0027Security: Control Event Log behavior when the log file reaches its maximum size\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "\u0027Security Event Log retention\u0027 behavior is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.10.25.2.2",
+        "Title":  "Ensure \u0027Security: Specify the maximum log file size (KB)\u0027 is set to \u0027Enabled: 196,608 or greater\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "\u0027Security Event Log size\u0027 is 196,608 KB or greater",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.10.25.3.1",
+        "Title":  "Ensure \u0027Setup: Control Event Log behavior when the log file reaches its maximum size\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Setup Event Log retention\u0027 behavior is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.25.3.2",
+        "Title":  "Ensure \u0027Setup: Specify the maximum log file size (KB)\u0027 is set to \u0027Enabled: 32,768 or greater\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Setup Event Log size\u0027 is less than 32,768 KB",
+        "Remediation":  "Increase via registry"
+    },
+    {
+        "Control":  "18.10.25.4.1",
+        "Title":  "Ensure \u0027System: Control Event Log behavior when the log file reaches its maximum size\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "\u0027System Event Log retention\u0027 behavior is disabled",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.10.25.4.2",
+        "Title":  "Ensure \u0027System: Specify the maximum log file size (KB)\u0027 is set to \u0027Enabled: 32,768 or greater\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "\u0027System Event Log size\u0027 is 32,768 KB or greater",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "18.10.28.3",
+        "Title":  "Ensure \u0027Turn off Data Execution Prevention for Explorer\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Data Execution Prevention\u0027 for Explorer is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.28.4",
+        "Title":  "Ensure \u0027Turn off heap termination on corruption\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Heap termination on corruption\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.28.5",
+        "Title":  "Ensure \u0027Turn off shell protocol protected mode\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Shell Protocol Protected Mode\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.41.1",
+        "Title":  "Ensure \u0027Block all consumer Microsoft account user authentication\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Consumer Microsoft account user authentication\u0027 is allowed",
+        "Remediation":  "Block via registry"
+    },
+    {
+        "Control":  "18.10.42.5.1",
+        "Title":  "Ensure \u0027Configure local setting override for reporting to Microsoft MAPS\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Local setting override for Microsoft MAPS\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.42.6.1.1",
+        "Title":  "Ensure \u0027Configure Attack Surface Reduction rules\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Attack Surface Reduction rules\u0027 are disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.42.6.1.2",
+        "Title":  "Ensure \u0027Configure Attack Surface Reduction rules: Set the state for each ASR rule\u0027 is configured (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027ASR Rule state\u0027 is not configured",
+        "Remediation":  "Configure the ASR rule states via Group Policy"
+    },
+    {
+        "Control":  "18.10.42.6.3.1",
+        "Title":  "Ensure \u0027Prevent users and apps from accessing dangerous websites\u0027 is set to \u0027Enabled: Block\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Prevent users and apps from accessing dangerous websites\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.42.7.1",
+        "Title":  "Ensure \u0027Enable file hash computation feature\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027File hash computation feature\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.42.10.1",
+        "Title":  "Ensure \u0027Scan all downloaded files and attachments\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Scan all downloaded files and attachments\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.42.10.2",
+        "Title":  "Ensure \u0027Turn off real-time protection\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Real-time protection\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.42.10.3",
+        "Title":  "Ensure \u0027Turn on behavior monitoring\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Behavior monitoring\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.42.10.4",
+        "Title":  "Ensure \u0027Turn on script scanning\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Script scanning\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.42.13.1",
+        "Title":  "Ensure \u0027Scan packed executables\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Scan packed executables\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.42.13.2",
+        "Title":  "Ensure \u0027Scan removable drives\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Scan removable drives\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.42.13.3",
+        "Title":  "Ensure \u0027Turn on e-mail scanning\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Email scanning\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.42.16",
+        "Title":  "Ensure \u0027Configure detection for potentially unwanted applications\u0027 is set to \u0027Enabled: Block\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Detection for potentially unwanted applications\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.42.17",
+        "Title":  "Ensure \u0027Turn off Microsoft Defender AntiVirus\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Microsoft Defender AntiVirus\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.43.1",
+        "Title":  "Ensure \u0027Allow auditing events in Microsoft Defender Application Guard\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Auditing events in Microsoft Defender Application Guard\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.43.2",
+        "Title":  "Ensure \u0027Allow camera and microphone access in Microsoft Defender Application Guard\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Camera and microphone access in Microsoft Defender Application Guard\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.43.3",
+        "Title":  "Ensure \u0027Allow data persistence for Microsoft Defender Application Guard\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Data persistence in Microsoft Defender Application Guard\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.43.4",
+        "Title":  "Ensure \u0027Allow files to download and save to the host operating system from Microsoft Defender Application Guard\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027File download to host OS from Microsoft Defender Application Guard\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.43.5",
+        "Title":  "Ensure \u0027Configure Microsoft Defender Application Guard clipboard settings: Clipboard behavior setting\u0027 is set to \u0027Enabled: Enable clipboard operation from an isolated session to the host\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Clipboard operation from isolated session to host\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.43.6",
+        "Title":  "Ensure \u0027Turn on Microsoft Defender Application Guard in Managed Mode\u0027 is set to \u0027Enabled: 1\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Microsoft Defender Application Guard in Managed Mode\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.50.1",
+        "Title":  "Ensure \u0027Prevent the usage of OneDrive for file storage\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027OneDrive file storage usage\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.56.2.3",
+        "Title":  "Ensure \u0027Do not allow passwords to be saved\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Saving passwords\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.56.3.3.3",
+        "Title":  "Ensure \u0027Do not allow drive redirection\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Drive redirection\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.56.3.9.1",
+        "Title":  "Ensure \u0027Always prompt for password upon connection\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Password prompt upon connection\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.56.3.9.2",
+        "Title":  "Ensure \u0027Require secure RPC communication\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Secure RPC communication\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.56.3.9.3",
+        "Title":  "Ensure \u0027Require use of specific security layer for remote (RDP) connections\u0027 is set to \u0027Enabled: SSL\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Specific security layer for RDP connections\u0027 is not SSL",
+        "Remediation":  "Set via registry"
+    },
+    {
+        "Control":  "18.10.56.3.9.4",
+        "Title":  "Ensure \u0027Require user authentication for remote connections by using Network Level Authentication\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027User authentication for remote connections\u0027 is disabled",
+        "Remediation":  "Enable via registry"
+    },
+    {
+        "Control":  "18.10.56.3.9.5",
+        "Title":  "Ensure \u0027Set client connection encryption level\u0027 is set to \u0027Enabled: High Level\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Client connection encryption level\u0027 is not set to High",
+        "Remediation":  "Set via registry"
+    },
+    {
+        "Control":  "18.10.56.3.11.1",
+        "Title":  "Ensure \u0027Do not delete temp folders upon exit\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Delete temp files on exit\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.57.1",
+        "Title":  "Ensure \u0027Prevent downloading of enclosures\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Downloading of enclosures\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.58.3",
+        "Title":  "Ensure \u0027Allow Cortana\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Cortana\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.58.4",
+        "Title":  "Ensure \u0027Allow Cortana above lock screen\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "\u0027Cortana above lock screen\u0027 is enabled",
+        "Remediation":  "Disable via registry"
+    },
+    {
+        "Control":  "18.10.58.5",
+        "Title":  "Ensure \u0027Allow indexing of encrypted files\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Indexing of encrypted files is enabled",
+        "Remediation":  "Set \u0027AllowIndexingEncryptedStoresOrItems\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.58.6",
+        "Title":  "Ensure \u0027Allow search and Cortana to use location\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Cortana search location usage is enabled",
+        "Remediation":  "Set \u0027AllowCortana\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.65.2",
+        "Title":  "Ensure \u0027Only display the private store within the Microsoft Store\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Public store is accessible",
+        "Remediation":  "Set \u0027DisableStoreApps\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "18.10.65.3",
+        "Title":  "Ensure \u0027Turn off Automatic Download and Install of updates\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Automatic updates are disabled",
+        "Remediation":  "Set \u0027NoAutoUpdate\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.65.4",
+        "Title":  "Ensure \u0027Turn off the offer to update to the latest version of Windows\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Offer to update Windows is enabled",
+        "Remediation":  "Set \u0027DisableOSUpgrade\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "18.10.71.1",
+        "Title":  "Ensure \u0027Allow widgets\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Widgets are enabled",
+        "Remediation":  "Set \u0027EnableWidgets\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.75.1.1",
+        "Title":  "Ensure \u0027Automatic Data Collection\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Automatic Data Collection is disabled",
+        "Remediation":  "Set \u0027AllowDataCollection\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "18.10.75.1.2",
+        "Title":  "Ensure \u0027Notify Malicious\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Malicious notifications are disabled",
+        "Remediation":  "Set \u0027EnableSmartScreen\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "18.10.75.1.3",
+        "Title":  "Ensure \u0027Notify Password Reuse\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Password reuse notifications are disabled",
+        "Remediation":  "Set \u0027EnablePasswordReuseNotification\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "18.10.75.1.4",
+        "Title":  "Ensure \u0027Notify Unsafe App\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Unsafe app notifications are disabled",
+        "Remediation":  "Set \u0027EnableAppProtection\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "18.10.75.1.5",
+        "Title":  "Ensure \u0027Service Enabled\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Windows Defender service is not running",
+        "Remediation":  "Enable Windows Defender service"
+    },
+    {
+        "Control":  "18.10.75.2.1",
+        "Title":  "Ensure \u0027Configure Windows Defender SmartScreen\u0027 is set to \u0027Enabled: Warn and prevent bypass\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "SmartScreen is not enabled",
+        "Remediation":  "Set \u0027EnableSmartScreen\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "18.10.77.1",
+        "Title":  "Ensure \u0027Enables or disables Windows Game Recording and Broadcasting\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Game Recording and Broadcasting is enabled",
+        "Remediation":  "Set \u0027AllowGameDVR\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.78.1",
+        "Title":  "Ensure \u0027Enable ESS with Supported Peripherals\u0027 is set to \u0027Enabled: 1\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Enhanced Storage Support is disabled",
+        "Remediation":  "Set \u0027EnableESS\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "18.10.79.2",
+        "Title":  "Ensure \u0027Allow Windows Ink Workspace\u0027 is set to \u0027Enabled: On, but disallow access above lock\u0027 OR \u0027Enabled: Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Windows Ink Workspace is non-compliant",
+        "Remediation":  "Set \u0027AllowWindowsInkWorkspace\u0027 to 0 (Disabled) or 2 (On but disallow above lock) via registry"
+    },
+    {
+        "Control":  "18.10.80.1",
+        "Title":  "Ensure \u0027Allow user control over installs\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "User control over installs is enabled",
+        "Remediation":  "Set \u0027EnableUserControl\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.80.2",
+        "Title":  "Ensure \u0027Always install with elevated privileges\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Always install with elevated privileges is enabled",
+        "Remediation":  "Set \u0027AlwaysInstallElevated\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.81.1",
+        "Title":  "Ensure \u0027Enable MPR notifications for the system\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "MPR notifications are enabled",
+        "Remediation":  "Set \u0027HwNotify\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.81.2",
+        "Title":  "Ensure \u0027Sign-in and lock last interactive user automatically after a restart\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Automatic sign-in after restart is enabled",
+        "Remediation":  "Set \u0027DisableAutomaticRestartSignOn\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "18.10.88.1.1",
+        "Title":  "Ensure \u0027Allow Basic authentication\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Basic authentication is enabled",
+        "Remediation":  "Set \u0027AllowBasic\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.88.1.2",
+        "Title":  "Ensure \u0027Allow unencrypted traffic\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Unencrypted traffic is enabled",
+        "Remediation":  "Set \u0027AllowUnencryptedTraffic\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.88.1.3",
+        "Title":  "Ensure \u0027Disallow Digest authentication\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Digest authentication is allowed",
+        "Remediation":  "Set \u0027AllowDigest\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.88.2.1",
+        "Title":  "Ensure \u0027Allow Basic authentication\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Basic authentication for WinRM Service is enabled",
+        "Remediation":  "Set \u0027AllowBasic\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.88.2.3",
+        "Title":  "Ensure \u0027Allow unencrypted traffic\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Unencrypted traffic for WinRM Service is enabled",
+        "Remediation":  "Set \u0027AllowUnencryptedTraffic\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.88.2.4",
+        "Title":  "Ensure \u0027Disallow WinRM from storing RunAs credentials\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "WinRM is allowed to store RunAs credentials",
+        "Remediation":  "Set \u0027DisableRunAs\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "18.10.90.1",
+        "Title":  "Ensure \u0027Allow clipboard sharing with Windows Sandbox\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Clipboard sharing with Sandbox is enabled",
+        "Remediation":  "Set \u0027AllowClipboardRedirection\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.90.2",
+        "Title":  "Ensure \u0027Allow networking in Windows Sandbox\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Networking in Sandbox is enabled",
+        "Remediation":  "Set \u0027AllowNetworking\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.91.2.1",
+        "Title":  "Ensure \u0027Prevent users from modifying settings\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Users can modify Delivery Optimization settings",
+        "Remediation":  "Set \u0027DODownloadMode\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.92.1.1",
+        "Title":  "Ensure \u0027No auto-restart with logged on users for scheduled automatic updates installations\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Auto-restart is prevented while users are logged on",
+        "Remediation":  "Set \u0027NoAutoRebootWithLoggedOnUsers\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.92.2.1",
+        "Title":  "Ensure \u0027Configure Automatic Updates\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Automatic Updates is disabled",
+        "Remediation":  "Set \u0027NoAutoUpdate\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.92.2.2",
+        "Title":  "Ensure \u0027Configure Automatic Updates: Scheduled install day\u0027 is set to \u00270 - Every day\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Scheduled install day is not set to 0 (Every day)",
+        "Remediation":  "Set \u0027ScheduledInstallDay\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.92.2.3",
+        "Title":  "Ensure \u0027Enable features introduced via servicing that are off by default\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Optional UUP content is enabled",
+        "Remediation":  "Set \u0027EnableOptionalUUPContent\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.92.2.4",
+        "Title":  "Ensure \u0027Remove access to â€œPause updatesâ€ feature\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Pause Updates feature is available",
+        "Remediation":  "Set \u0027SetDisablePauseUXAccess\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "18.10.92.4.1",
+        "Title":  "Ensure \u0027Manage preview builds\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Preview builds are enabled",
+        "Remediation":  "Set \u0027ManagePreviewBuilds\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.92.4.2",
+        "Title":  "Ensure \u0027Select when Preview Builds and Feature Updates are received\u0027 is set to \u0027Enabled: 180 or more days\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Feature updates are deferred  days (less than 180)",
+        "Remediation":  "Set \u0027DeferFeatureUpdatesPeriodInDays\u0027 to at least 180 via registry"
+    },
+    {
+        "Control":  "18.10.92.4.3",
+        "Title":  "Ensure \u0027Select when Quality Updates are received\u0027 is set to \u0027Enabled: 0 days\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Quality updates are deferred  days",
+        "Remediation":  "Set \u0027DeferQualityUpdatesPeriodInDays\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "18.10.92.4.4",
+        "Title":  "Ensure \u0027Enable optional updates\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Optional updates are enabled",
+        "Remediation":  "Set \u0027AllowOptionalContent\u0027 to 0 via registry"
+    },
+    {
+        "Control":  "19.5.1.1",
+        "Title":  "Ensure \u0027Turn off toast notifications on the lock screen\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Toast notifications are enabled on lock screen",
+        "Remediation":  "Set \u0027DisableLockScreenAppNotifications\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "19.7.5.1",
+        "Title":  "Ensure \u0027Do not preserve zone information in file attachments\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "Zone information is preserved in file attachments",
+        "Remediation":  "No action required"
+    },
+    {
+        "Control":  "19.7.5.2",
+        "Title":  "Ensure \u0027Notify antivirus programs when opening attachments\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Antivirus notification is disabled for file attachments",
+        "Remediation":  "Set \u0027ScanWithAntiVirus\u0027 to 3 via registry"
+    },
+    {
+        "Control":  "19.7.8.1",
+        "Title":  "Ensure \u0027Configure Windows spotlight on lock screen\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Windows Spotlight is enabled on lock screen",
+        "Remediation":  "Set \u0027ConfigureWindowsSpotlight\u0027 to 2 via registry"
+    },
+    {
+        "Control":  "19.7.8.2",
+        "Title":  "Ensure \u0027Do not suggest third-party content in Windows spotlight\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Third-party suggestions in Windows Spotlight are enabled",
+        "Remediation":  "Set \u0027DisableThirdPartySuggestions\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "19.7.8.5",
+        "Title":  "Ensure \u0027Turn off Spotlight collection on Desktop\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Spotlight collection on Desktop is enabled",
+        "Remediation":  "Set \u0027DisableSpotlightCollectionOnDesktop\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "19.7.26.1",
+        "Title":  "Ensure \u0027Prevent users from sharing files within their profile.\u0027 is set to \u0027Enabled\u0027 (Automated)",
+        "Status":  "Fail",
+        "Actual":  "Users can share files within their profile",
+        "Remediation":  "Set \u0027NoInplaceSharing\u0027 to 1 via registry"
+    },
+    {
+        "Control":  "19.7.42.1",
+        "Title":  "Ensure \u0027Always install with elevated privileges\u0027 is set to \u0027Disabled\u0027 (Automated)",
+        "Status":  "Pass",
+        "Actual":  "Always install with elevated privileges is disabled",
+        "Remediation":  "No action required"
+    }
+]
